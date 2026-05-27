@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutsch Steps – Strukturiertes Deutsch lernen von A1 bis C2</title>
+<meta name="description" content="Lerne Deutsch von A1 bis C2 mit einem klaren Lernpfad, interaktiven Kursen und professioneller Begleitung.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --navy-2: #0f1f3d;
+  --navy-3: #152847;
+  --blue: #1a56db;
+  --blue-light: #3b82f6;
+  --blue-glow: rgba(59,130,246,0.15);
+  --teal: #0d9488;
+  --teal-light: #14b8a6;
+  --white: #ffffff;
+  --off-white: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --gray-800: #1e293b;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-xl: 24px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 48px rgba(0,0,0,0.2);
+  --glow: 0 0 40px rgba(59,130,246,0.25);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5 { font-family: 'Sora', sans-serif; }
+
+/* NAVBAR */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 72px;
+  background: rgba(10,22,40,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.3s;
+}
+nav.scrolled { background: rgba(10,22,40,0.97); }
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700; font-size: 1.25rem; color: var(--white);
+}
+.nav-logo-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--blue-light), var(--teal));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 800; color: white;
+  font-family: 'Sora', sans-serif;
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none; color: rgba(255,255,255,0.7);
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-right {
+  display: flex; align-items: center; gap: 1rem;
+}
+
+.lang-switcher {
+  position: relative;
+}
+.lang-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer; color: var(--white);
+  font-size: 0.85rem; font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+}
+.lang-btn:hover { background: rgba(255,255,255,0.12); }
+.lang-flag { font-size: 1rem; }
+.lang-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  background: var(--navy-2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 160px;
+  display: none;
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+}
+.lang-dropdown.open { display: block; animation: fadeDown 0.2s ease; }
+.lang-option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.2s;
+}
+.lang-option:hover { background: rgba(255,255,255,0.07); }
+.lang-option.active { color: var(--blue-light); }
+
+.btn-nav {
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Sora', sans-serif;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-nav:hover {
+  background: var(--blue-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(59,130,246,0.4);
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 100px 5% 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(26,86,219,0.2) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 20% 80%, rgba(13,148,136,0.12) 0%, transparent 60%);
+}
+
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(59,130,246,0.12);
+  border: 1px solid rgba(59,130,246,0.3);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--blue-light);
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.6s ease;
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%; background: var(--blue-light);
+  animation: pulse 2s infinite;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800; line-height: 1.15;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.7s ease 0.1s both;
+}
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--blue-light), var(--teal-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.hero-sub {
+  font-size: 1.1rem; line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.7s ease 0.2s both;
+  max-width: 480px;
+}
+
+.hero-btns {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeInUp 0.7s ease 0.3s both;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue), var(--blue-light));
+  color: white; border: none; border-radius: 12px;
+  padding: 14px 28px; font-size: 1rem; font-weight: 600;
+  cursor: pointer; font-family: 'Sora', sans-serif;
+  transition: all 0.3s;
+  box-shadow: 0 4px 24px rgba(59,130,246,0.35);
+  text-decoration: none; display: inline-block;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(59,130,246,0.5);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.06);
+  color: white; border: 1px solid rgba(255,255,255,0.15); border-radius: 12px;
+  padding: 14px 28px; font-size: 1rem; font-weight: 500;
+  cursor: pointer; font-family: 'Sora', sans-serif;
+  transition: all 0.3s;
+  text-decoration: none; display: inline-block;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+.hero-trust {
+  display: flex; align-items: center; gap: 1.5rem;
+  margin-top: 2rem;
+  animation: fadeInUp 0.7s ease 0.4s both;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.5);
+}
+.trust-icon { color: var(--teal-light); font-size: 1rem; }
+
+/* HERO ILLUSTRATION */
+.hero-illustration {
+  position: relative;
+  animation: fadeInRight 0.8s ease 0.2s both;
+}
+.hero-card-main {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  animation: float 6s ease-in-out infinite;
+}
+.progress-header {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 1.5rem;
+}
+.progress-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700; font-size: 1rem;
+}
+.progress-badge {
+  background: rgba(16,185,129,0.15);
+  color: var(--green);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.75rem; font-weight: 600;
+}
+.level-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 8px;
+  margin-bottom: 1.5rem;
+}
+.level-chip {
+  text-align: center; padding: 10px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem; font-weight: 600;
+  font-family: 'Sora', sans-serif;
+}
+.level-chip.done {
+  background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(13,148,136,0.3));
+  border: 1px solid rgba(59,130,246,0.4);
+  color: var(--blue-light);
+}
+.level-chip.active {
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  color: white;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.4);
+}
+.level-chip.locked {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.3);
+}
+.lesson-progress {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.lp-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.lp-label {
+  font-size: 0.75rem; color: rgba(255,255,255,0.5);
+  width: 100px; flex-shrink: 0;
+}
+.lp-bar {
+  flex: 1; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden;
+}
+.lp-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--teal-light));
+  transition: width 1s ease;
+}
+.lp-pct {
+  font-size: 0.75rem; font-weight: 600;
+  width: 32px; text-align: right;
+  color: rgba(255,255,255,0.7);
+}
+
+.floating-card {
+  position: absolute;
+  background: rgba(15,31,61,0.9);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 10px 14px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+.fc-streak {
+  top: -20px; right: 20px;
+  animation: float 4s ease-in-out infinite 1s;
+}
+.fc-xp {
+  bottom: -20px; left: -20px;
+  animation: float 5s ease-in-out infinite 0.5s;
+}
+.fc-row { display: flex; align-items: center; gap: 8px; }
+.fc-icon { font-size: 1.2rem; }
+.fc-text { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+.fc-val { font-size: 0.9rem; font-weight: 700; font-family: 'Sora', sans-serif; }
+
+/* SECTIONS GENERAL */
+section {
+  padding: 100px 5%;
+}
+.section-inner {
+  max-width: 1200px; margin: 0 auto;
+}
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--blue-light);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800; line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.section-sub {
+  font-size: 1rem; line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+  max-width: 560px;
+}
+
+/* STATS BAR */
+.stats-bar {
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 5%;
+}
+.stats-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2rem;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 2.5rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--white), rgba(255,255,255,0.7));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.85rem; color: rgba(255,255,255,0.45);
+  margin-top: 6px;
+}
+
+/* LEARNING PATH */
+.path-section {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+}
+.path-visual {
+  margin-top: 4rem; position: relative;
+}
+.path-line {
+  position: absolute; top: 50%; left: 5%; right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+  transform: translateY(-50%);
+  z-index: 0;
+  border-radius: 2px;
+}
+.path-steps {
+  display: grid; grid-template-columns: repeat(6,1fr);
+  gap: 1rem; position: relative; z-index: 1;
+}
+.path-step {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; cursor: pointer;
+  transition: transform 0.3s;
+}
+.path-step:hover { transform: translateY(-6px); }
+.path-node {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1rem;
+  position: relative;
+  transition: all 0.3s;
+}
+.path-node.done {
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  box-shadow: 0 0 20px rgba(59,130,246,0.5);
+  color: white;
+}
+.path-node.current {
+  background: linear-gradient(135deg, var(--blue-light), var(--teal-light));
+  box-shadow: 0 0 30px rgba(59,130,246,0.6), 0 0 60px rgba(59,130,246,0.3);
+  color: white;
+  animation: glow 2s ease-in-out infinite;
+}
+.path-node.future {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.4);
+}
+.path-label {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700; font-size: 0.8rem;
+  text-align: center;
+}
+.path-desc {
+  font-size: 0.72rem; color: rgba(255,255,255,0.4);
+  text-align: center; line-height: 1.4;
+}
+.path-tooltip {
+  display: none;
+  position: absolute; bottom: calc(100% + 16px); left: 50%;
+  transform: translateX(-50%);
+  background: var(--navy-2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  min-width: 200px;
+  font-size: 0.8rem;
+  z-index: 10;
+  box-shadow: var(--shadow-lg);
+}
+.path-step:hover .path-tooltip { display: block; }
+.path-tooltip-title { font-weight: 700; margin-bottom: 6px; color: var(--blue-light); }
+.path-tooltip-list { padding-left: 1rem; color: rgba(255,255,255,0.6); }
+.path-tooltip-list li { margin-bottom: 2px; }
+
+/* COURSES */
+.courses-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap: 1.5rem; margin-top: 3rem;
+}
+.course-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  position: relative; overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.course-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+  opacity: 0; transition: opacity 0.3s;
+}
+.course-card:hover {
+  border-color: rgba(59,130,246,0.3);
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.course-card:hover::before { opacity: 1; }
+
+.course-level {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px; border-radius: 6px;
+  margin-bottom: 1rem;
+}
+.level-a { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.25); }
+.level-b { background: rgba(59,130,246,0.15); color: var(--blue-light); border: 1px solid rgba(59,130,246,0.25); }
+.level-c { background: rgba(245,158,11,0.15); color: var(--gold); border: 1px solid rgba(245,158,11,0.25); }
+
+.course-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+.course-sub { font-size: 0.875rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; }
+
+.course-meta {
+  display: flex; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+.meta-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.45);
+}
+.meta-icon { font-size: 1rem; }
+
+.course-goals {
+  list-style: none; margin-bottom: 1.5rem;
+}
+.course-goals li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 0.82rem; color: rgba(255,255,255,0.6);
+  margin-bottom: 6px; line-height: 1.4;
+}
+.goal-check { color: var(--teal-light); margin-top: 1px; }
+
+.btn-course {
+  width: 100%; padding: 12px;
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 10px;
+  color: var(--blue-light);
+  font-size: 0.875rem; font-weight: 600;
+  cursor: pointer; font-family: 'Sora', sans-serif;
+  transition: all 0.2s;
+}
+.btn-course:hover {
+  background: var(--blue);
+  color: white; border-color: var(--blue);
+}
+
+/* WHY SECTION */
+.why-section {
+  background: var(--navy-2);
+}
+.why-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.why-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  display: flex; gap: 1.5rem;
+  transition: all 0.3s;
+}
+.why-card:hover {
+  border-color: rgba(59,130,246,0.2);
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-2px);
+}
+.why-icon-box {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(13,148,136,0.2));
+  border: 1px solid rgba(59,130,246,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.why-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+.why-desc { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* DASHBOARD PREVIEW */
+.preview-section { background: var(--navy); }
+.preview-container {
+  margin-top: 3rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.preview-topbar {
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 14px 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.tb-dot { width: 12px; height: 12px; border-radius: 50%; }
+.tb-red { background: #ff5f57; }
+.tb-yellow { background: #febc2e; }
+.tb-green { background: #28c840; }
+.tb-title {
+  margin-left: auto; margin-right: auto;
+  font-size: 0.8rem; color: rgba(255,255,255,0.4);
+}
+.preview-body {
+  display: grid; grid-template-columns: 220px 1fr;
+  min-height: 480px;
+}
+.preview-sidebar {
+  background: rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(255,255,255,0.05);
+  padding: 1.5rem 1rem;
+}
+.sidebar-user {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 2rem; padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.user-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700;
+}
+.user-name { font-size: 0.85rem; font-weight: 600; }
+.user-level { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+.sidebar-nav { list-style: none; }
+.snav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: 8px;
+  font-size: 0.82rem; cursor: pointer;
+  color: rgba(255,255,255,0.5);
+  transition: all 0.2s; margin-bottom: 2px;
+}
+.snav-item.active {
+  background: rgba(59,130,246,0.15);
+  color: var(--blue-light);
+  font-weight: 600;
+}
+.snav-item:hover:not(.active) { background: rgba(255,255,255,0.04); color: white; }
+.snav-icon { font-size: 1rem; }
+
+.preview-main { padding: 1.5rem; }
+.pm-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1rem; font-weight: 700; margin-bottom: 1.5rem;
+}
+.pm-stats {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 10px;
+  margin-bottom: 1.5rem;
+}
+.pm-stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 14px;
+  text-align: center;
+}
+.pm-stat-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--blue-light), var(--teal-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.pm-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 3px; }
+.pm-lessons { display: flex; flex-direction: column; gap: 8px; }
+.pm-lesson {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 12px;
+  cursor: pointer; transition: all 0.2s;
+}
+.pm-lesson:hover { background: rgba(255,255,255,0.06); }
+.pm-lesson-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.li-blue { background: rgba(59,130,246,0.2); }
+.li-green { background: rgba(16,185,129,0.2); }
+.li-yellow { background: rgba(245,158,11,0.2); }
+.li-teal { background: rgba(13,148,136,0.2); }
+.pm-lesson-info { flex: 1; }
+.pm-lesson-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
+.pm-lesson-sub { font-size: 0.72rem; color: rgba(255,255,255,0.4); }
+.pm-lesson-progress {
+  width: 80px; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden;
+}
+.pm-lesson-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--blue), var(--teal)); }
+
+/* TESTIMONIALS */
+.testimonials-section { background: var(--navy-2); }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.testimonial-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  transition: all 0.3s;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59,130,246,0.2);
+}
+.t-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+.t-text {
+  font-size: 0.9rem; line-height: 1.7;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.t-author { display: flex; align-items: center; gap: 12px; }
+.t-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem;
+}
+.t-name { font-size: 0.9rem; font-weight: 600; }
+.t-role { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+.t-level {
+  margin-left: auto;
+  font-size: 0.7rem; font-weight: 700;
+  padding: 3px 8px; border-radius: 5px;
+}
+
+/* FAQ */
+.faq-section { background: var(--navy); }
+.faq-list { margin-top: 3rem; max-width: 740px; }
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden;
+}
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem 0; cursor: pointer;
+  font-weight: 600; font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--blue-light); }
+.faq-chevron {
+  font-size: 1.2rem; transition: transform 0.3s;
+  color: rgba(255,255,255,0.4); flex-shrink: 0;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  font-size: 0.9rem; line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+}
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.2rem; }
+
+/* CTA */
+.cta-section {
+  background: linear-gradient(135deg, var(--navy-2) 0%, rgba(26,86,219,0.15) 50%, var(--navy-2) 100%);
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-title {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 800; margin-bottom: 1rem;
+  position: relative;
+}
+.cta-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.55);
+  margin-bottom: 2.5rem; position: relative;
+}
+.cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; }
+.cta-note {
+  margin-top: 1.2rem;
+  font-size: 0.8rem; color: rgba(255,255,255,0.35);
+  position: relative;
+}
+
+/* FOOTER */
+footer {
+  background: rgba(0,0,0,0.4);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 60px 5% 30px;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand {}
+.footer-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Sora', sans-serif; font-weight: 700;
+  font-size: 1.1rem; text-decoration: none; color: white;
+  margin-bottom: 1rem;
+}
+.footer-tagline {
+  font-size: 0.875rem; color: rgba(255,255,255,0.4);
+  line-height: 1.6; max-width: 260px;
+}
+.footer-col-title {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5);
+  margin-bottom: 1rem;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a {
+  text-decoration: none; color: rgba(255,255,255,0.5);
+  font-size: 0.875rem; transition: color 0.2s;
+}
+.footer-links a:hover { color: white; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(59,130,246,0.5), 0 0 60px rgba(59,130,246,0.3); }
+  50% { box-shadow: 0 0 40px rgba(59,130,246,0.8), 0 0 80px rgba(59,130,246,0.4); }
+}
+
+/* reveal on scroll */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* AUTH MODAL */
+.auth-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.auth-overlay.open {
+  opacity: 1; pointer-events: all;
+}
+.auth-modal {
+  background: var(--navy-2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 2.5rem;
+  width: 100%; max-width: 420px;
+  margin: 1rem;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+}
+.auth-overlay.open .auth-modal {
+  transform: translateY(0);
+}
+.auth-modal-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Sora', sans-serif; font-weight: 700;
+  font-size: 1.1rem; margin-bottom: 1.5rem;
+}
+.auth-modal-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.5rem; font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.auth-modal-sub {
+  font-size: 0.875rem; color: rgba(255,255,255,0.5);
+  margin-bottom: 2rem; line-height: 1.5;
+}
+.auth-google-btn {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  background: white; color: #1a1a1a;
+  border: none; border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 1rem; font-weight: 600;
+  cursor: pointer; font-family: 'Sora', sans-serif;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.auth-google-btn:hover {
+  background: #f8f8f8;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.auth-google-btn:disabled {
+  opacity: 0.7; cursor: not-allowed; transform: none;
+}
+.auth-google-icon {
+  width: 20px; height: 20px;
+}
+.auth-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 1.5rem 0;
+  color: rgba(255,255,255,0.3); font-size: 0.8rem;
+}
+.auth-divider::before, .auth-divider::after {
+  content: ''; flex: 1;
+  height: 1px; background: rgba(255,255,255,0.08);
+}
+.auth-features {
+  display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 1.5rem;
+}
+.auth-feature {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.82rem; color: rgba(255,255,255,0.55);
+}
+.auth-feature-icon { color: var(--teal-light); }
+.auth-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(255,255,255,0.07);
+  border: none; border-radius: 8px;
+  width: 32px; height: 32px;
+  cursor: pointer; color: rgba(255,255,255,0.5);
+  font-size: 1rem; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.auth-close:hover { background: rgba(255,255,255,0.12); color: white; }
+.auth-modal { position: relative; }
+.auth-note {
+  font-size: 0.75rem; color: rgba(255,255,255,0.3);
+  text-align: center; margin-top: 1rem; line-height: 1.5;
+}
+.auth-error {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 0.82rem; color: #f87171;
+  margin-bottom: 1rem; display: none;
+}
+
+/* USER MENU */
+.user-nav {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 6px 12px;
+  cursor: pointer; transition: all 0.2s;
+}
+.user-nav:hover { background: rgba(255,255,255,0.12); }
+.user-nav-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  object-fit: cover;
+}
+.user-nav-avatar-placeholder {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700;
+}
+.user-nav-name {
+  font-size: 0.85rem; font-weight: 500;
+  max-width: 100px; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+.user-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  background: var(--navy-2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; overflow: hidden;
+  min-width: 200px; display: none;
+  box-shadow: var(--shadow-lg); z-index: 100;
+}
+.user-dropdown.open { display: block; animation: fadeDown 0.2s ease; }
+.user-dropdown-info {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.user-dropdown-email {
+  font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 2px;
+}
+.user-dropdown-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px; cursor: pointer;
+  font-size: 0.875rem; transition: background 0.2s;
+  color: rgba(255,255,255,0.7);
+}
+.user-dropdown-item:hover { background: rgba(255,255,255,0.07); }
+.user-dropdown-item.danger { color: #f87171; }
+.user-nav-wrapper { position: relative; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; }
+  .hero-illustration { display: none; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .path-steps { grid-template-columns: repeat(3,1fr); }
+  .path-line { display: none; }
+  .preview-body { grid-template-columns: 1fr; }
+  .preview-sidebar { display: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero { padding: 100px 5% 60px; }
+  .hero-title { font-size: 1.8rem; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .pm-stats { grid-template-columns: repeat(2,1fr); }
+  .footer-top { grid-template-columns: 1fr; }
+}
+</style>
+
+<style>
+/* AUTH MODAL */
+.auth-overlay {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+}
+.auth-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
+.auth-modal {
+  background: #0f1f3d;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 2.5rem;
+  width: 100%; max-width: 420px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  animation: slideUp 0.3s ease;
+}
+.auth-close {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,0.07); border: none;
+  color: white; width: 32px; height: 32px; border-radius: 50%;
+  cursor: pointer; font-size: 1rem; display: flex;
+  align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.auth-close:hover { background: rgba(255,255,255,0.15); }
+.auth-logo {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: linear-gradient(135deg, #1a56db, #14b8a6);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.2rem;
+  margin: 0 auto 1.2rem;
+}
+.auth-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;
+}
+.auth-sub {
+  font-size: 0.875rem; color: rgba(255,255,255,0.5);
+  margin-bottom: 2rem; line-height: 1.5;
+}
+.btn-google {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  width: 100%; padding: 14px;
+  background: white; color: #1e293b;
+  border: none; border-radius: 12px;
+  font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; font-family: 'Sora', sans-serif;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.btn-google:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.btn-google:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.google-icon { width: 20px; height: 20px; }
+.auth-note {
+  margin-top: 1.2rem; font-size: 0.75rem;
+  color: rgba(255,255,255,0.3); line-height: 1.5;
+}
+.auth-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 1.5rem 0; color: rgba(255,255,255,0.2); font-size: 0.8rem;
+}
+.auth-divider::before, .auth-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* USER MENU in navbar */
+.user-nav {
+  display: flex; align-items: center; gap: 10px;
+}
+.user-nav-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  object-fit: cover; border: 2px solid rgba(59,130,246,0.5);
+}
+.user-nav-name {
+  font-size: 0.85rem; font-weight: 600; max-width: 120px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.btn-signout {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 6px 12px;
+  color: rgba(255,255,255,0.6); font-size: 0.8rem;
+  cursor: pointer; transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.btn-signout:hover { background: rgba(255,255,255,0.12); color: white; }
+
+/* SUCCESS TOAST */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: #0f1f3d; border: 1px solid rgba(16,185,129,0.4);
+  border-radius: 12px; padding: 14px 24px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.875rem; font-weight: 500;
+  z-index: 3000; transition: transform 0.4s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+.toast-icon { font-size: 1.2rem; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">DS</div>
+    Deutsch Steps
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#courses" data-i18n="nav_courses">Kurse</a></li>
+    <li><a href="#why" data-i18n="nav_about">Über uns</a></li>
+    <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn" id="langBtn" aria-label="Sprache wählen">
+        <span class="lang-flag" id="langFlag">🇩🇪</span>
+        <span id="langLabel">DE</span>
+        <span style="font-size:0.7rem; opacity:0.6">▾</span>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <div class="lang-option active" data-lang="de">🇩🇪 &nbsp; Deutsch</div>
+        <div class="lang-option" data-lang="en">🇬🇧 &nbsp; English</div>
+        <div class="lang-option" data-lang="ru">🇷🇺 &nbsp; Русский</div>
+        <div class="lang-option" data-lang="uk">🇺🇦 &nbsp; Українська</div>
+      </div>
+    </div>
+    <!-- показывается когда НЕ залогинен -->
+    <a href="#" class="btn-nav" id="navAuthBtn" data-i18n="nav_cta">Kostenlos starten</a>
+    <!-- показывается когда залогинен -->
+    <div class="user-nav-wrapper" id="userNavWrapper" style="display:none;">
+      <div class="user-nav" id="userNavBtn">
+        <img class="user-nav-avatar" id="userNavAvatar" src="" alt="" style="display:none;">
+        <div class="user-nav-avatar-placeholder" id="userNavPlaceholder"></div>
+        <span class="user-nav-name" id="userNavName"></span>
+        <span style="font-size:0.7rem; opacity:0.6">▾</span>
+      </div>
+      <div class="user-dropdown" id="userDropdown">
+        <div class="user-dropdown-info">
+          <div style="font-size:0.875rem; font-weight:600;" id="dropdownName"></div>
+          <div class="user-dropdown-email" id="dropdownEmail"></div>
+        </div>
+        <div class="user-dropdown-item">📊 &nbsp; <span data-i18n="dd_dashboard">Mein Dashboard</span></div>
+        <div class="user-dropdown-item">📚 &nbsp; <span data-i18n="dd_courses">Meine Kurse</span></div>
+        <div class="user-dropdown-item danger" id="signOutBtn">🚪 &nbsp; <span data-i18n="dd_signout">Abmelden</span></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span data-i18n="badge">Zertifizierte Sprachplattform · Goethe-kompatibel</span>
+      </div>
+      <h1 class="hero-title">
+        <span data-i18n="hero_title_1">Deutsch lernen.</span><br>
+        <span class="highlight" data-i18n="hero_title_2">Schritt für Schritt</span><br>
+        <span data-i18n="hero_title_3">zur Sprachsicherheit.</span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero_sub">
+        Lerne Deutsch von A1 bis C2 mit einem klaren Lernpfad, interaktiven Kursen und professioneller Begleitung.
+      </p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn-primary" data-i18n="btn_start">Jetzt starten</a>
+        <a href="#courses" class="btn-secondary" data-i18n="btn_courses">Kurse entdecken</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-icon">✓</span><span data-i18n="trust_1">Keine Vorkenntnisse nötig</span></div>
+        <div class="trust-item"><span class="trust-icon">✓</span><span data-i18n="trust_2">Zertifikat inklusive</span></div>
+        <div class="trust-item"><span class="trust-icon">✓</span><span data-i18n="trust_3">Kostenlos testen</span></div>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <div class="hero-card-main">
+        <div class="progress-header">
+          <div class="progress-title">Mein Lernpfad</div>
+          <div class="progress-badge">B1 aktiv</div>
+        </div>
+        <div class="level-grid">
+          <div class="level-chip done">A1 ✓</div>
+          <div class="level-chip done">A2 ✓</div>
+          <div class="level-chip active">B1 ▶</div>
+          <div class="level-chip locked">B2</div>
+          <div class="level-chip locked">C1</div>
+          <div class="level-chip locked">C2</div>
+        </div>
+        <div class="lesson-progress">
+          <div class="lp-row">
+            <div class="lp-label">Grammatik</div>
+            <div class="lp-bar"><div class="lp-fill" style="width:78%"></div></div>
+            <div class="lp-pct">78%</div>
+          </div>
+          <div class="lp-row">
+            <div class="lp-label">Wortschatz</div>
+            <div class="lp-bar"><div class="lp-fill" style="width:62%"></div></div>
+            <div class="lp-pct">62%</div>
+          </div>
+          <div class="lp-row">
+            <div class="lp-label">Sprechen</div>
+            <div class="lp-bar"><div class="lp-fill" style="width:45%"></div></div>
+            <div class="lp-pct">45%</div>
+          </div>
+        </div>
+      </div>
+      <div class="floating-card fc-streak">
+        <div class="fc-row">
+          <span class="fc-icon">🔥</span>
+          <div>
+            <div class="fc-val">14 Tage</div>
+            <div class="fc-text">Lernserie aktiv</div>
+          </div>
+        </div>
+      </div>
+      <div class="floating-card fc-xp">
+        <div class="fc-row">
+          <span class="fc-icon">⭐</span>
+          <div>
+            <div class="fc-val">+240 XP</div>
+            <div class="fc-text">Diese Woche</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">12 000+</div>
+      <div class="stat-label" data-i18n="stat_students">Lernende weltweit</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">6</div>
+      <div class="stat-label" data-i18n="stat_levels">Sprachniveaus A1–C2</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">340+</div>
+      <div class="stat-label" data-i18n="stat_lessons">Interaktive Lektionen</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">4.9 ★</div>
+      <div class="stat-label" data-i18n="stat_rating">Durchschnittsbewertung</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEARNING PATH -->
+<section class="path-section" id="path">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="path_label">Lernpfad</div>
+    <h2 class="section-title reveal" data-i18n="path_title">Von A1 bis C2 — klar strukturiert</h2>
+    <p class="section-sub reveal" data-i18n="path_sub">Jedes Niveau baut auf dem vorherigen auf. Klicke auf eine Stufe, um mehr zu erfahren.</p>
+    <div class="path-visual reveal">
+      <div class="path-line"></div>
+      <div class="path-steps">
+        <div class="path-step">
+          <div class="path-tooltip">
+            <div class="path-tooltip-title">A1 – Anfänger</div>
+            <ul class="path-tooltip-list">
+              <li>Begrüßungen & Vorstellung</li>
+              <li>Zahlen, Farben, Alltag</li>
+              <li>Einfache Sätze bilden</li>
+            </ul>
+          </div>
+          <div class="path-node done">A1</div>
+          <div class="path-label">Anfänger</div>
+          <div class="path-desc">Grundlagen der Sprache</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip">
+            <div class="path-tooltip-title">A2 – Grundwissen</div>
+            <ul class="path-tooltip-list">
+              <li>Familie & Wohnen</li>
+              <li>Einkaufen & Reisen</li>
+              <li>Vergangene Ereignisse</li>
+            </ul>
+          </div>
+          <div class="path-node done">A2</div>
+          <div class="path-label">Grundwissen</div>
+          <div class="path-desc">Alltagssituationen meistern</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip">
+            <div class="path-tooltip-title">B1 – Mittelstufe</div>
+            <ul class="path-tooltip-list">
+              <li>Meinungen ausdrücken</li>
+              <li>Beruf & Ausbildung</li>
+              <li>Komplexe Satzstrukturen</li>
+            </ul>
+          </div>
+          <div class="path-node current">B1</div>
+          <div class="path-label">Mittelstufe</div>
+          <div class="path-desc">Selbstständige Kommunikation</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip">
+            <div class="path-tooltip-title">B2 – Fortgeschritten</div>
+            <ul class="path-tooltip-list">
+              <li>Fachsprachliche Texte</li>
+              <li>Diskussion & Argumentation</li>
+              <li>Akademisches Schreiben</li>
+            </ul>
+          </div>
+          <div class="path-node future">B2</div>
+          <div class="path-label">Fortgeschritten</div>
+          <div class="path-desc">Komplexe Themen verstehen</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip">
+            <div class="path-tooltip-title">C1 – Kompetent</div>
+            <ul class="path-tooltip-list">
+              <li>Wissenschaftliche Texte</li>
+              <li>Nuancierte Ausdrucksweise</li>
+              <li>Prüfungsvorbereitung</li>
+            </ul>
+          </div>
+          <div class="path-node future">C1</div>
+          <div class="path-label">Kompetent</div>
+          <div class="path-desc">Professionelle Kommunikation</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip">
+            <div class="path-tooltip-title">C2 – Meisterschaft</div>
+            <ul class="path-tooltip-list">
+              <li>Muttersprachliches Niveau</li>
+              <li>Literarische Texte</li>
+              <li>C2-Zertifikat</li>
+            </ul>
+          </div>
+          <div class="path-node future">C2</div>
+          <div class="path-label">Meisterschaft</div>
+          <div class="path-desc">Muttersprachliches Niveau</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="courses_label">Kursprogramme</div>
+    <h2 class="section-title reveal" data-i18n="courses_title">Finde deinen perfekten Kurs</h2>
+    <p class="section-sub reveal" data-i18n="courses_sub">Fünf klar strukturierte Kurse – vom ersten Wort bis zur professionellen Sprachkompetenz.</p>
+    <div class="courses-grid">
+
+      <div class="course-card reveal">
+        <div class="course-level level-a">A1 – A2</div>
+        <div class="course-title">Deutsch Grundlagen</div>
+        <div class="course-sub">Dein erster Schritt in die deutsche Sprache</div>
+        <div class="course-meta">
+          <div class="meta-item"><span class="meta-icon">📅</span><span data-i18n="weeks_12">12 Wochen</span></div>
+          <div class="meta-item"><span class="meta-icon">📚</span><span>48 Module</span></div>
+          <div class="meta-item"><span class="meta-icon">⭐</span><span>4.9</span></div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span><span>Sich vorstellen und begrüßen</span></li>
+          <li><span class="goal-check">✓</span><span>Alltägliche Gespräche führen</span></li>
+          <li><span class="goal-check">✓</span><span>Einfache Texte lesen & schreiben</span></li>
+        </ul>
+        <button class="btn-course" data-i18n="btn_enroll">Kurs starten</button>
+      </div>
+
+      <div class="course-card reveal">
+        <div class="course-level level-a">A2 – B1</div>
+        <div class="course-title">Alltag & Kommunikation</div>
+        <div class="course-sub">Flüssig im Alltag – sicher in Gesprächen</div>
+        <div class="course-meta">
+          <div class="meta-item"><span class="meta-icon">📅</span><span>14 Wochen</span></div>
+          <div class="meta-item"><span class="meta-icon">📚</span><span>56 Module</span></div>
+          <div class="meta-item"><span class="meta-icon">⭐</span><span>4.8</span></div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span><span>Meinungen klar ausdrücken</span></li>
+          <li><span class="goal-check">✓</span><span>Arbeit, Familie, Freizeit besprechen</span></li>
+          <li><span class="goal-check">✓</span><span>Reise & Behördengänge meistern</span></li>
+        </ul>
+        <button class="btn-course" data-i18n="btn_enroll">Kurs starten</button>
+      </div>
+
+      <div class="course-card reveal" style="border-color: rgba(59,130,246,0.2);">
+        <div style="position:absolute; top:16px; right:16px; background: rgba(59,130,246,0.15); color: var(--blue-light); border: 1px solid rgba(59,130,246,0.3); border-radius: 6px; padding: 2px 8px; font-size: 0.7rem; font-weight: 700;" data-i18n="popular">Beliebt</div>
+        <div class="course-level level-b">B1 – B2</div>
+        <div class="course-title">Beruf & Praxis</div>
+        <div class="course-sub">Professionell kommunizieren im Berufsumfeld</div>
+        <div class="course-meta">
+          <div class="meta-item"><span class="meta-icon">📅</span><span>16 Wochen</span></div>
+          <div class="meta-item"><span class="meta-icon">📚</span><span>64 Module</span></div>
+          <div class="meta-item"><span class="meta-icon">⭐</span><span>4.9</span></div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span><span>Bewerbung & Vorstellungsgespräch</span></li>
+          <li><span class="goal-check">✓</span><span>E-Mails & Berichte verfassen</span></li>
+          <li><span class="goal-check">✓</span><span>Fachdiskussionen führen</span></li>
+        </ul>
+        <button class="btn-course" data-i18n="btn_enroll">Kurs starten</button>
+      </div>
+
+      <div class="course-card reveal">
+        <div class="course-level level-b">B2 – C1</div>
+        <div class="course-title">Akademisches Deutsch</div>
+        <div class="course-sub">Für Studium und wissenschaftliches Arbeiten</div>
+        <div class="course-meta">
+          <div class="meta-item"><span class="meta-icon">📅</span><span>18 Wochen</span></div>
+          <div class="meta-item"><span class="meta-icon">📚</span><span>72 Module</span></div>
+          <div class="meta-item"><span class="meta-icon">⭐</span><span>4.8</span></div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span><span>Wissenschaftliche Texte analysieren</span></li>
+          <li><span class="goal-check">✓</span><span>Hausarbeiten & Referate halten</span></li>
+          <li><span class="goal-check">✓</span><span>DSH/TestDaF Vorbereitung</span></li>
+        </ul>
+        <button class="btn-course" data-i18n="btn_enroll">Kurs starten</button>
+      </div>
+
+      <div class="course-card reveal">
+        <div class="course-level level-c">C1 – C2</div>
+        <div class="course-title">Professionelle Sprachkompetenz</div>
+        <div class="course-sub">Muttersprachliches Niveau erreichen</div>
+        <div class="course-meta">
+          <div class="meta-item"><span class="meta-icon">📅</span><span>20 Wochen</span></div>
+          <div class="meta-item"><span class="meta-icon">📚</span><span>80 Module</span></div>
+          <div class="meta-item"><span class="meta-icon">⭐</span><span>5.0</span></div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span><span>Literarische und journalistische Texte</span></li>
+          <li><span class="goal-check">✓</span><span>Differenzierte Argumentation</span></li>
+          <li><span class="goal-check">✓</span><span>C2-Goethe-Zertifikat Vorbereitung</span></li>
+        </ul>
+        <button class="btn-course" data-i18n="btn_enroll">Kurs starten</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section" id="why">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="why_label">Warum Deutsch Steps</div>
+    <h2 class="section-title reveal" data-i18n="why_title">Lernen, wie es sein sollte</h2>
+    <p class="section-sub reveal" data-i18n="why_sub">Wir kombinieren bewährte Didaktik mit moderner Technologie für maximalen Lernerfolg.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon-box">🗺️</div>
+        <div>
+          <div class="why-title" data-i18n="why_1_title">Strukturierter Lernpfad</div>
+          <div class="why-desc" data-i18n="why_1_desc">Jedes Thema baut logisch auf dem vorigen auf. Kein Raten, kein Springen – nur klarer Fortschritt von Lektion zu Lektion.</div>
+        </div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-box">🎯</div>
+        <div>
+          <div class="why-title" data-i18n="why_2_title">Interaktive Übungen</div>
+          <div class="why-desc" data-i18n="why_2_desc">Sprechen, Hören, Lesen, Schreiben – alle vier Fähigkeiten werden gezielt trainiert durch abwechslungsreiche Übungsformate.</div>
+        </div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-box">💼</div>
+        <div>
+          <div class="why-title" data-i18n="why_3_title">Praxisorientiertes Lernen</div>
+          <div class="why-desc" data-i18n="why_3_desc">Reale Dialoge, authentische Texte und berufstaugliche Sprachsituationen bereiten dich direkt auf den Alltag vor.</div>
+        </div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-box">📊</div>
+        <div>
+          <div class="why-title" data-i18n="why_4_title">Persönliche Fortschrittsanalyse</div>
+          <div class="why-desc" data-i18n="why_4_desc">Dein Dashboard zeigt genau, wo du stehst, was du als nächstes lernst und welche Stärken du bereits entwickelt hast.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD PREVIEW -->
+<section class="preview-section" id="platform">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="preview_label">Plattform</div>
+    <h2 class="section-title reveal" data-i18n="preview_title">Dein persönliches Lern-Dashboard</h2>
+    <p class="section-sub reveal" data-i18n="preview_sub">Alles auf einen Blick – dein Fortschritt, die nächsten Lektionen, deine Statistiken.</p>
+    <div class="preview-container reveal">
+      <div class="preview-topbar">
+        <div class="tb-dot tb-red"></div>
+        <div class="tb-dot tb-yellow"></div>
+        <div class="tb-dot tb-green"></div>
+        <div class="tb-title">Deutsch Steps – Lernplattform</div>
+      </div>
+      <div class="preview-body">
+        <div class="preview-sidebar">
+          <div class="sidebar-user">
+            <div class="user-avatar">MA</div>
+            <div>
+              <div class="user-name">Maria A.</div>
+              <div class="user-level">Niveau: B1</div>
+            </div>
+          </div>
+          <ul class="sidebar-nav">
+            <li class="snav-item active"><span class="snav-icon">📊</span> Dashboard</li>
+            <li class="snav-item"><span class="snav-icon">📚</span> Lektionen</li>
+            <li class="snav-item"><span class="snav-icon">🎙️</span> Sprechen</li>
+            <li class="snav-item"><span class="snav-icon">📝</span> Wortschatz</li>
+            <li class="snav-item"><span class="snav-icon">📜</span> Zertifikate</li>
+            <li class="snav-item"><span class="snav-icon">⚙️</span> Einstellungen</li>
+          </ul>
+        </div>
+        <div class="preview-main">
+          <div class="pm-title">Guten Morgen, Maria! Weiter so 🎉</div>
+          <div class="pm-stats">
+            <div class="pm-stat">
+              <div class="pm-stat-num">78%</div>
+              <div class="pm-stat-label">B1 Fortschritt</div>
+            </div>
+            <div class="pm-stat">
+              <div class="pm-stat-num">14</div>
+              <div class="pm-stat-label">Tage Streak</div>
+            </div>
+            <div class="pm-stat">
+              <div class="pm-stat-num">2 340</div>
+              <div class="pm-stat-label">Gesamt-XP</div>
+            </div>
+            <div class="pm-stat">
+              <div class="pm-stat-num">3</div>
+              <div class="pm-stat-label">Zertifikate</div>
+            </div>
+          </div>
+          <div class="pm-lessons">
+            <div class="pm-lesson">
+              <div class="pm-lesson-icon li-blue">📖</div>
+              <div class="pm-lesson-info">
+                <div class="pm-lesson-title">Lektion 24 – Konjunktiv II</div>
+                <div class="pm-lesson-sub">Grammatik · 20 min</div>
+              </div>
+              <div class="pm-lesson-progress"><div class="pm-lesson-fill" style="width:65%"></div></div>
+            </div>
+            <div class="pm-lesson">
+              <div class="pm-lesson-icon li-green">🎙️</div>
+              <div class="pm-lesson-info">
+                <div class="pm-lesson-title">Sprechübung – Bewerbungsgespräch</div>
+                <div class="pm-lesson-sub">Sprechen · 15 min</div>
+              </div>
+              <div class="pm-lesson-progress"><div class="pm-lesson-fill" style="width:30%"></div></div>
+            </div>
+            <div class="pm-lesson">
+              <div class="pm-lesson-icon li-yellow">⚡</div>
+              <div class="pm-lesson-info">
+                <div class="pm-lesson-title">Vokabeltrainer – Berufswortschatz</div>
+                <div class="pm-lesson-sub">Wortschatz · 10 min</div>
+              </div>
+              <div class="pm-lesson-progress"><div class="pm-lesson-fill" style="width:0%"></div></div>
+            </div>
+            <div class="pm-lesson">
+              <div class="pm-lesson-icon li-teal">📝</div>
+              <div class="pm-lesson-info">
+                <div class="pm-lesson-title">Schreibübung – Formeller Brief</div>
+                <div class="pm-lesson-sub">Schreiben · 25 min</div>
+              </div>
+              <div class="pm-lesson-progress"><div class="pm-lesson-fill" style="width:0%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="test_label">Erfolgsgeschichten</div>
+    <h2 class="section-title reveal" data-i18n="test_title">Was unsere Lernenden sagen</h2>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-text">"Ich habe mit null Deutschkenntnissen angefangen und nach 8 Monaten mein B2-Zertifikat bestanden. Der strukturierte Lernpfad hat mir wirklich geholfen, niemals den Faden zu verlieren."</div>
+        <div class="t-author">
+          <div class="t-avatar" style="background: linear-gradient(135deg,#3b82f6,#14b8a6)">OK</div>
+          <div>
+            <div class="t-name">Olena Kovalenko</div>
+            <div class="t-role">Lehrerin, Kiew → Köln</div>
+          </div>
+          <div class="t-level level-b" style="background: rgba(59,130,246,0.15); color: var(--blue-light); border: 1px solid rgba(59,130,246,0.3); border-radius: 6px; padding: 3px 8px; font-size: 0.7rem;">B2 ✓</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-text">"Die Sprechübungen sind absolut authentisch. Ich konnte nach 3 Monaten problemlos Vorstellungsgespräche auf Deutsch führen. Heute arbeite ich in einem deutschen Ingenieurbüro."</div>
+        <div class="t-author">
+          <div class="t-avatar" style="background: linear-gradient(135deg,#f59e0b,#ef4444)">AH</div>
+          <div>
+            <div class="t-name">Arman Hussain</div>
+            <div class="t-role">Ingenieur, Karachi → München</div>
+          </div>
+          <div class="t-level level-b" style="background: rgba(59,130,246,0.15); color: var(--blue-light); border: 1px solid rgba(59,130,246,0.3); border-radius: 6px; padding: 3px 8px; font-size: 0.7rem;">C1 ✓</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-text">"Das Dashboard zeigt mir genau, wo meine Lücken sind. Ich lerne jeden Tag 20 Minuten und merke echten Fortschritt. Nach 6 Monaten: DSH bestanden, Studium angefangen!"</div>
+        <div class="t-author">
+          <div class="t-avatar" style="background: linear-gradient(135deg,#8b5cf6,#3b82f6)">LP</div>
+          <div>
+            <div class="t-name">Li Ping</div>
+            <div class="t-role">Studentin, Shanghai → Berlin</div>
+          </div>
+          <div class="t-level" style="background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); border-radius: 6px; padding: 3px 8px; font-size: 0.7rem;">DSH ✓</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="faq_label">FAQ</div>
+    <h2 class="section-title reveal" data-i18n="faq_title">Häufige Fragen</h2>
+    <div class="faq-list" id="faqList">
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span data-i18n="faq_1_q">Muss ich Vorkenntnisse mitbringen?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a" data-i18n="faq_1_a">Nein. Unser A1-Kurs beginnt bei null – buchstäblich beim ersten Wort. Du musst nur Lernbereitschaft und einen Computer oder ein Smartphone mitbringen. Vorkenntnisse sind willkommen, aber nie Voraussetzung.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span data-i18n="faq_2_q">Wie lange dauert es, von A1 auf B2 zu kommen?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a" data-i18n="faq_2_a">Bei einer täglichen Lernzeit von 30–45 Minuten können die meisten Lernenden das B2-Niveau in 12–18 Monaten erreichen. Natürlich hängt es vom individuellen Tempo ab – unsere Plattform passt sich deinem Rhythmus an.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span data-i18n="faq_3_q">Werden die Zertifikate offiziell anerkannt?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a" data-i18n="faq_3_a">Unsere internen Abschluss-Zertifikate bestätigen den Abschluss eines Kursniveaus. Für offizielle Prüfungen (Goethe, DSH, TestDaF) bereiten wir dich gezielt vor, sodass du optimal aufgestellt bist.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span data-i18n="faq_4_q">Kann ich die Plattform kostenlos testen?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a" data-i18n="faq_4_a">Ja! Die ersten 7 Tage sind vollständig kostenlos – ohne Kreditkarte. Du hast Zugang zu allen Funktionen und kannst in Ruhe entscheiden, ob Deutsch Steps das Richtige für dich ist.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span data-i18n="faq_5_q">Gibt es Live-Unterricht oder nur aufgezeichnete Kurse?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a" data-i18n="faq_5_a">Beide Optionen stehen zur Verfügung. Die Grundkurse sind flexibel auf Abruf verfügbar. Zusätzlich bieten wir wöchentliche Live-Sessions mit zertifizierten DaF-Lehrern an, die du je nach Paket hinzubuchen kannst.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="cta-glow"></div>
+  <div class="section-inner" style="position:relative; text-align:center;">
+    <div class="section-label" style="display:inline-block;" data-i18n="cta_label">Jetzt loslegen</div>
+    <h2 class="cta-title reveal" data-i18n="cta_title">Beginne heute deinen Weg<br>zu fließendem Deutsch.</h2>
+    <p class="cta-sub reveal" data-i18n="cta_sub">7 Tage kostenlos. Kein Abo-Zwang. Keine Kreditkarte erforderlich.</p>
+    <div class="cta-btns reveal">
+      <a href="#" class="btn-primary" style="font-size:1.1rem; padding:16px 36px;" data-i18n="btn_free">Kostenlos testen</a>
+      <a href="#courses" class="btn-secondary" style="font-size:1.1rem; padding:16px 36px;" data-i18n="btn_courses_2">Alle Kurse ansehen</a>
+    </div>
+    <div class="cta-note" data-i18n="cta_note">✓ Keine Kreditkarte · ✓ Jederzeit kündbar · ✓ Sofort starten</div>
+  </div>
+</section>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" id="authClose">✕</button>
+    <div class="auth-modal-logo">
+      <div class="nav-logo-icon">DS</div>
+      Deutsch Steps
+    </div>
+    <h2 class="auth-modal-title" data-i18n="auth_title">Kostenlos starten</h2>
+    <p class="auth-modal-sub" data-i18n="auth_sub">Erstelle deinen kostenlosen Account und beginne sofort mit dem Lernen.</p>
+    <div class="auth-features">
+      <div class="auth-feature"><span class="auth-feature-icon">✓</span><span data-i18n="auth_f1">Alle Kurse kostenlos zugänglich</span></div>
+      <div class="auth-feature"><span class="auth-feature-icon">✓</span><span data-i18n="auth_f2">Persönlicher Lernfortschritt gespeichert</span></div>
+      <div class="auth-feature"><span class="auth-feature-icon">✓</span><span data-i18n="auth_f3">Zertifikate nach Kursabschluss</span></div>
+    </div>
+    <div class="auth-error" id="authError"></div>
+    <button class="auth-google-btn" id="googleSignInBtn">
+      <svg class="auth-google-icon" viewBox="0 0 24 24">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+      </svg>
+      <span data-i18n="auth_google_btn">Mit Google anmelden</span>
+    </button>
+    <p class="auth-note" data-i18n="auth_note">Mit der Anmeldung stimmst du unseren Nutzungsbedingungen zu. Keine Kreditkarte erforderlich.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <div class="nav-logo-icon">DS</div>
+          Deutsch Steps
+        </a>
+        <p class="footer-tagline" data-i18n="footer_tagline">Strukturiertes Deutsch lernen von A1 bis C2. Für Karriere, Studium und Alltag.</p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_courses">Kurse</div>
+        <ul class="footer-links">
+          <li><a href="#">A1–A2 Grundlagen</a></li>
+          <li><a href="#">A2–B1 Alltag</a></li>
+          <li><a href="#">B1–B2 Beruf</a></li>
+          <li><a href="#">B2–C1 Akademisch</a></li>
+          <li><a href="#">C1–C2 Profi</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_company">Unternehmen</div>
+        <ul class="footer-links">
+          <li><a href="#" data-i18n="footer_about">Über uns</a></li>
+          <li><a href="#" data-i18n="footer_prices">Preise</a></li>
+          <li><a href="#" data-i18n="footer_blog">Blog</a></li>
+          <li><a href="#" data-i18n="footer_contact">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer_legal">Rechtliches</div>
+        <ul class="footer-links">
+          <li><a href="#" data-i18n="footer_privacy">Datenschutz</a></li>
+          <li><a href="#" data-i18n="footer_imprint">Impressum</a></li>
+          <li><a href="#" data-i18n="footer_agb">AGB</a></li>
+          <li><a href="#" data-i18n="footer_cookies">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Deutsch Steps. Alle Rechte vorbehalten.</div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);" data-i18n="footer_lang">Plattformsprache:</div>
+    </div>
+  </div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" id="authClose">✕</button>
+    <div class="auth-logo">DS</div>
+    <div class="auth-title" id="authTitle">Kostenlos starten</div>
+    <div class="auth-sub" id="authSub">Erstelle dein kostenloses Konto und starte sofort mit dem Lernen.</div>
+    <button class="btn-google" id="btnGoogle">
+      <svg class="google-icon" viewBox="0 0 24 24">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+      </svg>
+      <span id="googleBtnText">Mit Google anmelden</span>
+    </button>
+    <div class="auth-note" id="authNote">Mit der Anmeldung stimmst du unseren Nutzungsbedingungen zu.<br>Alle Kurse sind kostenlos. Keine Kreditkarte erforderlich.</div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-icon">🎉</span>
+  <span id="toastText">Willkommen! Dein Konto wurde erstellt.</span>
+</div>
+
+<script>
+// --- I18N DATA ---
+const translations = {
+  de: {
+    nav_courses: "Kurse", nav_about: "Über uns", nav_faq: "FAQ", nav_cta: "Kostenlos starten",
+    badge: "Zertifizierte Sprachplattform · Goethe-kompatibel",
+    hero_title_1: "Deutsch lernen.", hero_title_2: "Schritt für Schritt", hero_title_3: "zur Sprachsicherheit.",
+    hero_sub: "Lerne Deutsch von A1 bis C2 mit einem klaren Lernpfad, interaktiven Kursen und professioneller Begleitung.",
+    btn_start: "Jetzt starten", btn_courses: "Kurse entdecken",
+    trust_1: "Keine Vorkenntnisse nötig", trust_2: "Zertifikat inklusive", trust_3: "Kostenlos testen",
+    stat_students: "Lernende weltweit", stat_levels: "Sprachniveaus A1–C2", stat_lessons: "Interaktive Lektionen", stat_rating: "Durchschnittsbewertung",
+    path_label: "Lernpfad", path_title: "Von A1 bis C2 — klar strukturiert", path_sub: "Jedes Niveau baut auf dem vorherigen auf. Klicke auf eine Stufe, um mehr zu erfahren.",
+    courses_label: "Kursprogramme", courses_title: "Finde deinen perfekten Kurs", courses_sub: "Fünf klar strukturierte Kurse – vom ersten Wort bis zur professionellen Sprachkompetenz.",
+    weeks_12: "12 Wochen", popular: "Beliebt", btn_enroll: "Kurs starten",
+    why_label: "Warum Deutsch Steps", why_title: "Lernen, wie es sein sollte", why_sub: "Wir kombinieren bewährte Didaktik mit moderner Technologie für maximalen Lernerfolg.",
+    why_1_title: "Strukturierter Lernpfad", why_1_desc: "Jedes Thema baut logisch auf dem vorigen auf. Kein Raten, kein Springen – nur klarer Fortschritt von Lektion zu Lektion.",
+    why_2_title: "Interaktive Übungen", why_2_desc: "Sprechen, Hören, Lesen, Schreiben – alle vier Fähigkeiten werden gezielt trainiert durch abwechslungsreiche Übungsformate.",
+    why_3_title: "Praxisorientiertes Lernen", why_3_desc: "Reale Dialoge, authentische Texte und berufstaugliche Sprachsituationen bereiten dich direkt auf den Alltag vor.",
+    why_4_title: "Persönliche Fortschrittsanalyse", why_4_desc: "Dein Dashboard zeigt genau, wo du stehst, was du als nächstes lernst und welche Stärken du bereits entwickelt hast.",
+    preview_label: "Plattform", preview_title: "Dein persönliches Lern-Dashboard", preview_sub: "Alles auf einen Blick – dein Fortschritt, die nächsten Lektionen, deine Statistiken.",
+    test_label: "Erfolgsgeschichten", test_title: "Was unsere Lernenden sagen",
+    faq_label: "FAQ", faq_title: "Häufige Fragen",
+    faq_1_q: "Muss ich Vorkenntnisse mitbringen?", faq_1_a: "Nein. Unser A1-Kurs beginnt bei null – buchstäblich beim ersten Wort. Du musst nur Lernbereitschaft und einen Computer oder ein Smartphone mitbringen.",
+    faq_2_q: "Wie lange dauert es, von A1 auf B2 zu kommen?", faq_2_a: "Bei einer täglichen Lernzeit von 30–45 Minuten können die meisten Lernenden das B2-Niveau in 12–18 Monaten erreichen.",
+    faq_3_q: "Werden die Zertifikate offiziell anerkannt?", faq_3_a: "Unsere internen Abschluss-Zertifikate bestätigen den Abschluss eines Kursniveaus. Für offizielle Prüfungen bereiten wir dich gezielt vor.",
+    faq_4_q: "Kann ich die Plattform kostenlos testen?", faq_4_a: "Ja! Die ersten 7 Tage sind vollständig kostenlos – ohne Kreditkarte.",
+    faq_5_q: "Gibt es Live-Unterricht oder nur aufgezeichnete Kurse?", faq_5_a: "Beide Optionen stehen zur Verfügung. Zusätzlich bieten wir wöchentliche Live-Sessions mit zertifizierten DaF-Lehrern an.",
+    cta_label: "Jetzt loslegen", cta_title: "Beginne heute deinen Weg\nzu fließendem Deutsch.", cta_sub: "7 Tage kostenlos. Kein Abo-Zwang. Keine Kreditkarte erforderlich.",
+    btn_free: "Kostenlos testen", btn_courses_2: "Alle Kurse ansehen", cta_note: "✓ Keine Kreditkarte · ✓ Jederzeit kündbar · ✓ Sofort starten",
+    footer_tagline: "Strukturiertes Deutsch lernen von A1 bis C2.", footer_courses: "Kurse", footer_company: "Unternehmen", footer_legal: "Rechtliches",
+    footer_about: "Über uns", footer_prices: "Preise", footer_blog: "Blog", footer_contact: "Kontakt",
+    footer_privacy: "Datenschutz", footer_imprint: "Impressum", footer_agb: "AGB", footer_cookies: "Cookies",
+    footer_lang: "Plattformsprache: Deutsch"
+  },
+  en: {
+    nav_courses: "Courses", nav_about: "About", nav_faq: "FAQ", nav_cta: "Start for free",
+    badge: "Certified Language Platform · Goethe-compatible",
+    hero_title_1: "Learn German.", hero_title_2: "Step by step", hero_title_3: "to language confidence.",
+    hero_sub: "Learn German from A1 to C2 with a clear learning path, interactive courses, and professional guidance.",
+    btn_start: "Get started", btn_courses: "Explore courses",
+    trust_1: "No prior knowledge needed", trust_2: "Certificate included", trust_3: "Try for free",
+    stat_students: "Students worldwide", stat_levels: "Language levels A1–C2", stat_lessons: "Interactive lessons", stat_rating: "Average rating",
+    path_label: "Learning Path", path_title: "From A1 to C2 — clearly structured", path_sub: "Each level builds on the previous one. Click a level to learn more.",
+    courses_label: "Course Programs", courses_title: "Find your perfect course", courses_sub: "Five clearly structured courses – from your first word to professional fluency.",
+    weeks_12: "12 weeks", popular: "Popular", btn_enroll: "Start course",
+    why_label: "Why Deutsch Steps", why_title: "Learning, the way it should be", why_sub: "We combine proven pedagogy with modern technology for maximum learning success.",
+    why_1_title: "Structured learning path", why_1_desc: "Every topic builds logically on the previous one. No guessing, no jumping – just clear progress from lesson to lesson.",
+    why_2_title: "Interactive exercises", why_2_desc: "Speaking, listening, reading, writing – all four skills are targeted through varied exercise formats.",
+    why_3_title: "Practice-oriented learning", why_3_desc: "Real dialogues, authentic texts, and professional scenarios prepare you directly for everyday life.",
+    why_4_title: "Personal progress analytics", why_4_desc: "Your dashboard shows exactly where you stand, what you'll learn next, and the strengths you've already developed.",
+    preview_label: "Platform", preview_title: "Your personal learning dashboard", preview_sub: "Everything at a glance – your progress, next lessons, your statistics.",
+    test_label: "Success Stories", test_title: "What our learners say",
+    faq_label: "FAQ", faq_title: "Frequently asked questions",
+    faq_1_q: "Do I need prior knowledge?", faq_1_a: "No. Our A1 course starts from zero – literally from the very first word. All you need is willingness to learn and a computer or smartphone.",
+    faq_2_q: "How long does it take to go from A1 to B2?", faq_2_a: "With a daily learning time of 30–45 minutes, most learners can reach B2 level in 12–18 months.",
+    faq_3_q: "Are the certificates officially recognized?", faq_3_a: "Our internal certificates confirm completion of a course level. For official exams (Goethe, DSH, TestDaF), we prepare you specifically.",
+    faq_4_q: "Can I try the platform for free?", faq_4_a: "Yes! The first 7 days are completely free – no credit card required.",
+    faq_5_q: "Is there live teaching or only recorded courses?", faq_5_a: "Both options are available. We also offer weekly live sessions with certified DaF teachers.",
+    cta_label: "Get started now", cta_title: "Begin your journey\nto fluent German today.", cta_sub: "7 days free. No subscription pressure. No credit card required.",
+    btn_free: "Try for free", btn_courses_2: "View all courses", cta_note: "✓ No credit card · ✓ Cancel anytime · ✓ Start immediately",
+    footer_tagline: "Structured German learning from A1 to C2.", footer_courses: "Courses", footer_company: "Company", footer_legal: "Legal",
+    footer_about: "About us", footer_prices: "Pricing", footer_blog: "Blog", footer_contact: "Contact",
+    footer_privacy: "Privacy Policy", footer_imprint: "Imprint", footer_agb: "Terms", footer_cookies: "Cookies",
+    footer_lang: "Platform language: English"
+  },
+  ru: {
+    nav_courses: "Курсы", nav_about: "О нас", nav_faq: "FAQ", nav_cta: "Начать бесплатно",
+    badge: "Сертифицированная языковая платформа · Совместима с Goethe",
+    hero_title_1: "Учи немецкий.", hero_title_2: "Шаг за шагом", hero_title_3: "к уверенному владению.",
+    hero_sub: "Изучай немецкий от A1 до C2 по чёткому учебному пути, интерактивным курсам и с профессиональным сопровождением.",
+    btn_start: "Начать сейчас", btn_courses: "Смотреть курсы",
+    trust_1: "Без предварительных знаний", trust_2: "Сертификат включён", trust_3: "Попробовать бесплатно",
+    stat_students: "Учеников по всему миру", stat_levels: "Уровни A1–C2", stat_lessons: "Интерактивных уроков", stat_rating: "Средняя оценка",
+    path_label: "Учебный путь", path_title: "От A1 до C2 — чётко структурировано", path_sub: "Каждый уровень опирается на предыдущий. Нажми на ступень, чтобы узнать больше.",
+    courses_label: "Программы курсов", courses_title: "Найди свой идеальный курс", courses_sub: "Пять чётко структурированных курсов — от первого слова до профессионального владения.",
+    weeks_12: "12 недель", popular: "Популярный", btn_enroll: "Начать курс",
+    why_label: "Почему Deutsch Steps", why_title: "Обучение таким, каким оно должно быть", why_sub: "Мы сочетаем проверенную дидактику с современными технологиями для максимального результата.",
+    why_1_title: "Структурированный учебный путь", why_1_desc: "Каждая тема логически строится на предыдущей. Никакого хаоса — только чёткий прогресс от урока к уроку.",
+    why_2_title: "Интерактивные упражнения", why_2_desc: "Говорение, аудирование, чтение, письмо — все четыре навыка целенаправленно тренируются в разнообразных форматах.",
+    why_3_title: "Практически ориентированное обучение", why_3_desc: "Реальные диалоги, аутентичные тексты и профессиональные языковые ситуации готовят к реальной жизни.",
+    why_4_title: "Персональный анализ прогресса", why_4_desc: "Твой дашборд показывает, где ты находишься, что учишь дальше и какие сильные стороны уже развил.",
+    preview_label: "Платформа", preview_title: "Твоя личная учебная панель", preview_sub: "Всё сразу — твой прогресс, следующие уроки, статистика.",
+    test_label: "Истории успеха", test_title: "Что говорят наши ученики",
+    faq_label: "FAQ", faq_title: "Частые вопросы",
+    faq_1_q: "Нужны ли предварительные знания?", faq_1_a: "Нет. Наш курс A1 начинается с нуля — буквально с первого слова. Нужны лишь желание учиться и компьютер или смартфон.",
+    faq_2_q: "Сколько времени нужно от A1 до B2?", faq_2_a: "При ежедневном обучении 30–45 минут большинство достигают уровня B2 за 12–18 месяцев.",
+    faq_3_q: "Официально ли признаются сертификаты?", faq_3_a: "Наши сертификаты подтверждают прохождение уровня. К официальным экзаменам мы тоже готовим.",
+    faq_4_q: "Можно ли попробовать платформу бесплатно?", faq_4_a: "Да! Первые 7 дней полностью бесплатны — без кредитной карты.",
+    faq_5_q: "Есть ли живые занятия или только записи?", faq_5_a: "Оба варианта доступны. Мы также предлагаем еженедельные живые сессии с сертифицированными преподавателями.",
+    cta_label: "Начни сейчас", cta_title: "Начни сегодня свой путь\nк свободному немецкому.", cta_sub: "7 дней бесплатно. Без обязательной подписки. Без кредитной карты.",
+    btn_free: "Попробовать бесплатно", btn_courses_2: "Все курсы", cta_note: "✓ Без карты · ✓ Отмена в любой момент · ✓ Сразу начать",
+    footer_tagline: "Структурированное изучение немецкого от A1 до C2.", footer_courses: "Курсы", footer_company: "Компания", footer_legal: "Правовая информация",
+    footer_about: "О нас", footer_prices: "Цены", footer_blog: "Блог", footer_contact: "Контакт",
+    footer_privacy: "Конфиденциальность", footer_imprint: "Impressum", footer_agb: "Условия", footer_cookies: "Cookies",
+    footer_lang: "Язык платформы: Русский"
+  },
+  uk: {
+    nav_courses: "Курси", nav_about: "Про нас", nav_faq: "FAQ", nav_cta: "Почати безкоштовно",
+    badge: "Сертифікована мовна платформа · Сумісна з Goethe",
+    hero_title_1: "Вчи німецьку.", hero_title_2: "Крок за кроком", hero_title_3: "до впевненого мовлення.",
+    hero_sub: "Вивчай німецьку від A1 до C2 з чітким навчальним шляхом, інтерактивними курсами та професійним супроводом.",
+    btn_start: "Почати зараз", btn_courses: "Переглянути курси",
+    trust_1: "Без попередніх знань", trust_2: "Сертифікат включено", trust_3: "Спробувати безкоштовно",
+    stat_students: "Учнів по всьому світу", stat_levels: "Рівні A1–C2", stat_lessons: "Інтерактивних уроків", stat_rating: "Середня оцінка",
+    path_label: "Навчальний шлях", path_title: "Від A1 до C2 — чітко структуровано", path_sub: "Кожен рівень спирається на попередній. Натисни на щабель, щоб дізнатися більше.",
+    courses_label: "Програми курсів", courses_title: "Знайди свій ідеальний курс", courses_sub: "П'ять чітко структурованих курсів — від першого слова до професійного рівня.",
+    weeks_12: "12 тижнів", popular: "Популярний", btn_enroll: "Розпочати курс",
+    why_label: "Чому Deutsch Steps", why_title: "Навчання таким, яким воно має бути", why_sub: "Ми поєднуємо перевірену дидактику із сучасними технологіями для максимального результату.",
+    why_1_title: "Структурований навчальний шлях", why_1_desc: "Кожна тема логічно будується на попередній. Жодного хаосу — тільки чіткий прогрес від уроку до уроку.",
+    why_2_title: "Інтерактивні вправи", why_2_desc: "Говоріння, слухання, читання, письмо — усі чотири навички цілеспрямовано тренуються в різноманітних форматах.",
+    why_3_title: "Практично орієнтоване навчання", why_3_desc: "Реальні діалоги, автентичні тексти та професійні мовні ситуації готують тебе безпосередньо до реального життя.",
+    why_4_title: "Персональний аналіз прогресу", why_4_desc: "Твій дашборд показує, де ти знаходишся, що вчитимеш далі і які сильні сторони вже розвинув.",
+    preview_label: "Платформа", preview_title: "Твоя особиста навчальна панель", preview_sub: "Все одразу — твій прогрес, наступні уроки, статистика.",
+    test_label: "Історії успіху", test_title: "Що кажуть наші учні",
+    faq_label: "FAQ", faq_title: "Часті запитання",
+    faq_1_q: "Чи потрібні попередні знання?", faq_1_a: "Ні. Наш курс A1 починається з нуля — буквально з першого слова. Потрібні лише бажання вчитися та комп'ютер або смартфон.",
+    faq_2_q: "Скільки часу потрібно від A1 до B2?", faq_2_a: "При щоденному навчанні 30–45 хвилин більшість досягають рівня B2 за 12–18 місяців.",
+    faq_3_q: "Чи офіційно визнаються сертифікати?", faq_3_a: "Наші сертифікати підтверджують проходження рівня. До офіційних іспитів ми також готуємо.",
+    faq_4_q: "Чи можна спробувати платформу безкоштовно?", faq_4_a: "Так! Перші 7 днів повністю безкоштовні — без кредитної картки.",
+    faq_5_q: "Чи є живі заняття чи тільки записи?", faq_5_a: "Обидва варіанти доступні. Ми також пропонуємо щотижневі живі сесії з сертифікованими викладачами.",
+    cta_label: "Почни зараз", cta_title: "Почни сьогодні свій шлях\nдо вільної німецької.", cta_sub: "7 днів безкоштовно. Без обов'язкової підписки. Без кредитної картки.",
+    btn_free: "Спробувати безкоштовно", btn_courses_2: "Всі курси", cta_note: "✓ Без картки · ✓ Скасування будь-коли · ✓ Почати одразу",
+    footer_tagline: "Структуроване вивчення німецької від A1 до C2.", footer_courses: "Курси", footer_company: "Компанія", footer_legal: "Правова інформація",
+    footer_about: "Про нас", footer_prices: "Ціни", footer_blog: "Блог", footer_contact: "Контакт",
+    footer_privacy: "Конфіденційність", footer_imprint: "Impressum", footer_agb: "Умови", footer_cookies: "Cookies",
+    footer_lang: "Мова платформи: Українська"
+  }
+};
+
+const langMeta = {
+  de: { flag: '🇩🇪', label: 'DE' },
+  en: { flag: '🇬🇧', label: 'EN' },
+  ru: { flag: '🇷🇺', label: 'RU' },
+  uk: { flag: '🇺🇦', label: 'UK' }
+};
+
+let currentLang = localStorage.getItem('ds_lang') || navigator.language.slice(0,2);
+if (!translations[currentLang]) currentLang = 'de';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('ds_lang', lang);
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+  document.getElementById('langFlag').textContent = langMeta[lang].flag;
+  document.getElementById('langLabel').textContent = langMeta[lang].label;
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.lang === lang);
+  });
+}
+
+// Lang switcher
+const langBtn = document.getElementById('langBtn');
+const langDropdown = document.getElementById('langDropdown');
+langBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  langDropdown.classList.toggle('open');
+});
+document.addEventListener('click', () => langDropdown.classList.remove('open'));
+document.querySelectorAll('.lang-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    applyLang(opt.dataset.lang);
+    langDropdown.classList.remove('open');
+  });
+});
+
+applyLang(currentLang);
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// --- AUTH MODAL ---
+function openAuth() {
+  document.getElementById('authOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAuth() {
+  document.getElementById('authOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('authClose').addEventListener('click', closeAuth);
+document.getElementById('authOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) closeAuth();
+});
+
+// Intercept all CTA buttons
+document.querySelectorAll('.btn-primary, .btn-course, [href="#cta"]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    if (!window.currentUser) {
+      e.preventDefault();
+      openAuth();
+    }
+  });
+});
+
+// Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastText').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// Update navbar after login
+function updateNavbar(user) {
+  const navRight = document.querySelector('.nav-right');
+  const langSwitcher = navRight.querySelector('.lang-switcher');
+  let userEl = document.getElementById('userNavEl');
+  if (userEl) userEl.remove();
+
+  if (user) {
+    const el = document.createElement('div');
+    el.id = 'userNavEl';
+    el.className = 'user-nav';
+    el.innerHTML = `
+      ${user.photoURL ? `<img src="${user.photoURL}" class="user-nav-avatar" alt="avatar">` : `<div class="user-nav-avatar" style="background:linear-gradient(135deg,#1a56db,#14b8a6);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem">${user.displayName?.[0] || 'U'}</div>`}
+      <span class="user-nav-name">${user.displayName || user.email}</span>
+      <button class="btn-signout" id="signOutBtn">Abmelden</button>
+    `;
+    navRight.insertBefore(el, langSwitcher);
+    document.getElementById('signOutBtn').addEventListener('click', () => {
+      import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js').then(({getAuth, signOut}) => {
+        signOut(getAuth());
+      });
+    });
+    // Hide old CTA button
+    const ctaBtn = navRight.querySelector('.btn-nav');
+    if (ctaBtn) ctaBtn.style.display = 'none';
+  } else {
+    const ctaBtn = navRight.querySelector('.btn-nav');
+    if (ctaBtn) ctaBtn.style.display = '';
+  }
+}
+</script>
+
+<!-- FIREBASE -->
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+  import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDxL0QMz6JF8hV9bZpT5dAtu4YpE6PPff0",
+    authDomain: "deutsch-steps.firebaseapp.com",
+    projectId: "deutsch-steps",
+    storageBucket: "deutsch-steps.firebasestorage.app",
+    messagingSenderId: "301567183223",
+    appId: "1:301567183223:web:77d16899173f1dedcef972"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  // Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.08 + 's';
+  observer.observe(el);
+});
+
+// Track auth state
+  onAuthStateChanged(auth, (user) => {
+    window.currentUser = user;
+    updateNavbar(user);
+  });
+
+  // Google sign-in button
+  document.getElementById('btnGoogle').addEventListener('click', async () => {
+    const btn = document.getElementById('btnGoogle');
+    const btnText = document.getElementById('googleBtnText');
+    btn.disabled = true;
+    btnText.textContent = 'Wird geladen...';
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      closeAuth();
+      const isNew = result._tokenResponse?.isNewUser;
+      showToast(isNew
+        ? `Willkommen, ${user.displayName}! 🎉 Dein Konto wurde erstellt.`
+        : `Schön, dich wieder zu sehen, ${user.displayName}! 👋`
+      );
+    } catch (err) {
+      console.error(err);
+      btnText.textContent = 'Fehler – bitte erneut versuchen';
+      setTimeout(() => {
+        btnText.textContent = 'Mit Google anmelden';
+        btn.disabled = false;
+      }, 2000);
+    }
+  });
+</script>
+</body>
+</html>

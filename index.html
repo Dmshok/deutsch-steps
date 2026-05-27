@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutsch Steps – Strukturiertes Deutsch lernen von A1 bis C2</title>
+<meta name="description" content="Lerne Deutsch von A1 bis C2 mit einem klaren Lernpfad und interaktiven Kursen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --navy-2: #0f1f3d;
+  --navy-3: #152847;
+  --blue: #1a56db;
+  --blue-light: #3b82f6;
+  --teal: #0d9488;
+  --teal-light: #14b8a6;
+  --white: #ffffff;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --gold: #f59e0b;
+  --green: #10b981;
+  --radius: 16px;
+  --radius-xl: 24px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 48px rgba(0,0,0,0.2);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Inter',sans-serif; background:var(--navy); color:var(--white); overflow-x:hidden; }
+h1,h2,h3,h4 { font-family:'Sora',sans-serif; }
+
+/* PAGE SYSTEM */
+.page { display:none; min-height:100vh; }
+.page.active { display:block; }
+
+/* NAVBAR */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 5%; height:72px;
+  background:rgba(10,22,40,0.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav-logo {
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none; font-family:'Sora',sans-serif;
+  font-weight:700; font-size:1.2rem; color:var(--white); cursor:pointer;
+}
+.nav-logo-icon {
+  width:36px; height:36px; border-radius:10px;
+  background:linear-gradient(135deg,var(--blue-light),var(--teal));
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem; font-weight:800; color:white; font-family:'Sora',sans-serif;
+}
+.nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
+.nav-links a {
+  text-decoration:none; color:rgba(255,255,255,0.65);
+  font-size:0.9rem; font-weight:500; cursor:pointer; transition:color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color:var(--white); }
+.nav-right { display:flex; align-items:center; gap:1rem; }
+
+/* LANG */
+.lang-switcher { position:relative; }
+.lang-btn {
+  display:flex; align-items:center; gap:6px;
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12);
+  border-radius:8px; padding:6px 12px; cursor:pointer; color:var(--white);
+  font-size:0.85rem; font-family:'Inter',sans-serif; transition:all 0.2s;
+}
+.lang-btn:hover { background:rgba(255,255,255,0.12); }
+.lang-dropdown {
+  position:absolute; top:calc(100% + 8px); right:0;
+  background:var(--navy-2); border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px; overflow:hidden; min-width:160px;
+  display:none; box-shadow:var(--shadow-lg); z-index:100;
+}
+.lang-dropdown.open { display:block; animation:fadeDown 0.2s ease; }
+.lang-option {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 16px; cursor:pointer; font-size:0.875rem; transition:background 0.2s;
+}
+.lang-option:hover { background:rgba(255,255,255,0.07); }
+.lang-option.active { color:var(--blue-light); }
+
+.btn-nav {
+  background:var(--blue); color:white; border:none; border-radius:8px;
+  padding:8px 20px; font-size:0.875rem; font-weight:600; cursor:pointer;
+  font-family:'Sora',sans-serif; transition:all 0.2s; text-decoration:none;
+}
+.btn-nav:hover { background:var(--blue-light); transform:translateY(-1px); }
+
+/* USER NAV */
+.user-nav { display:flex; align-items:center; gap:10px; }
+.user-nav-avatar {
+  width:34px; height:34px; border-radius:50%;
+  object-fit:cover; border:2px solid rgba(59,130,246,0.5);
+}
+.user-nav-initials {
+  width:34px; height:34px; border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:0.8rem; border:2px solid rgba(59,130,246,0.5);
+}
+.user-nav-name { font-size:0.85rem; font-weight:600; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.btn-signout {
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px; padding:6px 12px; color:rgba(255,255,255,0.6);
+  font-size:0.8rem; cursor:pointer; transition:all 0.2s; font-family:'Inter',sans-serif;
+}
+.btn-signout:hover { background:rgba(255,255,255,0.12); color:white; }
+
+/* HERO PAGE */
+#page-home {
+  background: var(--navy);
+}
+.hero {
+  min-height:100vh; display:flex; align-items:center;
+  padding:100px 5% 60px; position:relative; overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(26,86,219,0.2) 0%,transparent 70%),
+              radial-gradient(ellipse 50% 50% at 20% 80%,rgba(13,148,136,0.12) 0%,transparent 60%);
+}
+.hero-grid {
+  position:absolute; inset:0; opacity:0.04;
+  background-image:linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-content {
+  position:relative; z-index:2;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:4rem; align-items:center; max-width:1200px; margin:0 auto; width:100%;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(59,130,246,0.12); border:1px solid rgba(59,130,246,0.3);
+  border-radius:50px; padding:6px 16px; font-size:0.8rem; font-weight:600;
+  color:var(--blue-light); margin-bottom:1.5rem;
+}
+.badge-dot { width:6px; height:6px; border-radius:50%; background:var(--blue-light); animation:pulse 2s infinite; }
+.hero-title { font-size:clamp(2rem,4vw,3.2rem); font-weight:800; line-height:1.15; margin-bottom:1.5rem; }
+.hero-title .highlight { background:linear-gradient(135deg,var(--blue-light),var(--teal-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero-sub { font-size:1.05rem; line-height:1.7; color:rgba(255,255,255,0.6); margin-bottom:2.5rem; max-width:480px; }
+.hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-primary {
+  background:linear-gradient(135deg,var(--blue),var(--blue-light));
+  color:white; border:none; border-radius:12px; padding:14px 28px;
+  font-size:1rem; font-weight:600; cursor:pointer; font-family:'Sora',sans-serif;
+  transition:all 0.3s; box-shadow:0 4px 24px rgba(59,130,246,0.35);
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(59,130,246,0.5); }
+.btn-secondary {
+  background:rgba(255,255,255,0.06); color:white;
+  border:1px solid rgba(255,255,255,0.15); border-radius:12px;
+  padding:14px 28px; font-size:1rem; font-weight:500; cursor:pointer;
+  font-family:'Sora',sans-serif; transition:all 0.3s;
+}
+.btn-secondary:hover { background:rgba(255,255,255,0.1); }
+.hero-trust { display:flex; align-items:center; gap:1.5rem; margin-top:2rem; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:8px; font-size:0.8rem; color:rgba(255,255,255,0.45); }
+.trust-icon { color:var(--teal-light); }
+
+/* HERO CARD */
+.hero-illustration { position:relative; }
+.hero-card-main {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+  border-radius:var(--radius-xl); padding:2rem;
+  backdrop-filter:blur(10px); animation:float 6s ease-in-out infinite;
+}
+.progress-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; }
+.progress-title { font-family:'Sora',sans-serif; font-weight:700; font-size:1rem; }
+.progress-badge { background:rgba(16,185,129,0.15); color:var(--green); border:1px solid rgba(16,185,129,0.3); border-radius:6px; padding:3px 10px; font-size:0.75rem; font-weight:600; }
+.level-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:1.5rem; }
+.level-chip { text-align:center; padding:10px 8px; border-radius:10px; font-size:0.8rem; font-weight:600; font-family:'Sora',sans-serif; }
+.level-chip.done { background:linear-gradient(135deg,rgba(59,130,246,0.3),rgba(13,148,136,0.3)); border:1px solid rgba(59,130,246,0.4); color:var(--blue-light); }
+.level-chip.active { background:linear-gradient(135deg,var(--blue),var(--teal)); color:white; box-shadow:0 4px 16px rgba(59,130,246,0.4); }
+.level-chip.locked { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.3); }
+.lesson-progress { display:flex; flex-direction:column; gap:10px; }
+.lp-row { display:flex; align-items:center; gap:10px; }
+.lp-label { font-size:0.75rem; color:rgba(255,255,255,0.5); width:100px; flex-shrink:0; }
+.lp-bar { flex:1; height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden; }
+.lp-fill { height:100%; border-radius:3px; background:linear-gradient(90deg,var(--blue),var(--teal-light)); }
+.lp-pct { font-size:0.75rem; font-weight:600; width:32px; text-align:right; color:rgba(255,255,255,0.7); }
+.floating-card {
+  position:absolute; background:rgba(15,31,61,0.95);
+  border:1px solid rgba(255,255,255,0.1); border-radius:12px;
+  padding:10px 14px; backdrop-filter:blur(10px); box-shadow:var(--shadow);
+}
+.fc-streak { top:-20px; right:20px; animation:float 4s ease-in-out infinite 1s; }
+.fc-xp { bottom:-20px; left:-20px; animation:float 5s ease-in-out infinite 0.5s; }
+.fc-row { display:flex; align-items:center; gap:8px; }
+.fc-icon { font-size:1.2rem; }
+.fc-text { font-size:0.75rem; color:rgba(255,255,255,0.6); }
+.fc-val { font-size:0.9rem; font-weight:700; font-family:'Sora',sans-serif; }
+
+/* STATS BAR */
+.stats-bar {
+  background:rgba(255,255,255,0.03);
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  padding:40px 5%;
+}
+.stats-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; }
+.stat-item { text-align:center; }
+.stat-num { font-family:'Sora',sans-serif; font-size:2.5rem; font-weight:800; background:linear-gradient(135deg,var(--white),rgba(255,255,255,0.7)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+.stat-label { font-size:0.85rem; color:rgba(255,255,255,0.45); margin-top:6px; }
+
+/* COURSES PAGE */
+#page-courses { background:var(--navy); padding-top:72px; }
+.page-hero {
+  padding:60px 5% 40px; max-width:1200px; margin:0 auto;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.page-hero h1 { font-size:clamp(1.8rem,3vw,2.4rem); font-weight:800; margin-bottom:0.5rem; }
+.page-hero p { color:rgba(255,255,255,0.5); font-size:1rem; }
+
+/* PATH */
+.path-section { padding:60px 5%; max-width:1200px; margin:0 auto; }
+.section-label { display:inline-block; font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue-light); margin-bottom:0.75rem; }
+.section-title { font-size:clamp(1.5rem,2.5vw,2rem); font-weight:800; margin-bottom:0.75rem; }
+.section-sub { font-size:0.95rem; color:rgba(255,255,255,0.5); max-width:560px; line-height:1.6; }
+.path-visual { margin-top:3rem; position:relative; }
+.path-line { position:absolute; top:32px; left:5%; right:5%; height:2px; background:linear-gradient(90deg,var(--blue),var(--teal)); z-index:0; border-radius:2px; }
+.path-steps { display:grid; grid-template-columns:repeat(6,1fr); gap:1rem; position:relative; z-index:1; }
+.path-step { display:flex; flex-direction:column; align-items:center; gap:10px; cursor:pointer; transition:transform 0.3s; position:relative; }
+.path-step:hover { transform:translateY(-6px); }
+.path-node {
+  width:64px; height:64px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Sora',sans-serif; font-weight:800; font-size:1rem; transition:all 0.3s;
+}
+.path-node.done { background:linear-gradient(135deg,var(--blue),var(--teal)); box-shadow:0 0 20px rgba(59,130,246,0.5); color:white; }
+.path-node.current { background:linear-gradient(135deg,var(--blue-light),var(--teal-light)); box-shadow:0 0 30px rgba(59,130,246,0.6); color:white; animation:glow 2s ease-in-out infinite; }
+.path-node.future { background:rgba(255,255,255,0.05); border:2px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.4); }
+.path-label { font-family:'Sora',sans-serif; font-weight:700; font-size:0.8rem; text-align:center; }
+.path-desc { font-size:0.72rem; color:rgba(255,255,255,0.4); text-align:center; line-height:1.4; }
+.path-tooltip {
+  display:none; position:absolute; bottom:calc(100% + 12px); left:50%; transform:translateX(-50%);
+  background:var(--navy-2); border:1px solid rgba(255,255,255,0.1); border-radius:10px;
+  padding:12px 16px; min-width:180px; font-size:0.8rem; z-index:10; box-shadow:var(--shadow-lg);
+}
+.path-step:hover .path-tooltip { display:block; }
+.path-tooltip-title { font-weight:700; margin-bottom:6px; color:var(--blue-light); }
+.path-tooltip-list { padding-left:1rem; color:rgba(255,255,255,0.6); }
+.path-tooltip-list li { margin-bottom:2px; }
+
+/* COURSES GRID */
+.courses-section { padding:20px 5% 80px; max-width:1200px; margin:0 auto; }
+.courses-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; margin-top:2rem; }
+.course-card {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+  border-radius:var(--radius-xl); padding:2rem; position:relative; overflow:hidden;
+  transition:all 0.3s; cursor:pointer;
+}
+.course-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--blue),var(--teal)); opacity:0; transition:opacity 0.3s; }
+.course-card:hover { border-color:rgba(59,130,246,0.3); background:rgba(255,255,255,0.05); transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.3); }
+.course-card:hover::before { opacity:1; }
+.course-card.selected { border-color:rgba(59,130,246,0.5) !important; background:rgba(59,130,246,0.08) !important; }
+.course-card.selected::before { opacity:1; }
+.course-level { display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:4px 12px; border-radius:6px; margin-bottom:1rem; }
+.level-a { background:rgba(16,185,129,0.15); color:var(--green); border:1px solid rgba(16,185,129,0.25); }
+.level-b { background:rgba(59,130,246,0.15); color:var(--blue-light); border:1px solid rgba(59,130,246,0.25); }
+.level-c { background:rgba(245,158,11,0.15); color:var(--gold); border:1px solid rgba(245,158,11,0.25); }
+.course-title { font-size:1.15rem; font-weight:700; margin-bottom:0.4rem; }
+.course-sub { font-size:0.875rem; color:rgba(255,255,255,0.45); margin-bottom:1.5rem; }
+.course-meta { display:flex; gap:1.5rem; margin-bottom:1.5rem; }
+.meta-item { display:flex; align-items:center; gap:6px; font-size:0.8rem; color:rgba(255,255,255,0.45); }
+.course-goals { list-style:none; margin-bottom:1.5rem; }
+.course-goals li { display:flex; align-items:flex-start; gap:8px; font-size:0.82rem; color:rgba(255,255,255,0.6); margin-bottom:6px; line-height:1.4; }
+.goal-check { color:var(--teal-light); margin-top:1px; }
+.btn-course {
+  width:100%; padding:12px;
+  background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.25);
+  border-radius:10px; color:var(--blue-light); font-size:0.875rem; font-weight:600;
+  cursor:pointer; font-family:'Sora',sans-serif; transition:all 0.2s;
+}
+.btn-course:hover { background:var(--blue); color:white; border-color:var(--blue); }
+.btn-course.selected-btn { background:var(--blue); color:white; border-color:var(--blue); }
+.selected-badge {
+  position:absolute; top:16px; right:16px;
+  background:rgba(16,185,129,0.15); color:var(--green);
+  border:1px solid rgba(16,185,129,0.3); border-radius:6px;
+  padding:3px 10px; font-size:0.7rem; font-weight:700;
+}
+
+/* ABOUT PAGE */
+#page-about { background:var(--navy); padding-top:72px; }
+.about-inner { max-width:1200px; margin:0 auto; padding:60px 5% 80px; }
+
+/* WHY CARDS */
+.why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:2.5rem; }
+.why-card {
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+  border-radius:var(--radius-xl); padding:2rem; display:flex; gap:1.5rem;
+  transition:all 0.3s;
+}
+.why-card:hover { border-color:rgba(59,130,246,0.2); background:rgba(255,255,255,0.04); transform:translateY(-2px); }
+.why-icon-box {
+  width:56px; height:56px; border-radius:14px;
+  background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(13,148,136,0.2));
+  border:1px solid rgba(59,130,246,0.2);
+  display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0;
+}
+.why-title { font-size:1.05rem; font-weight:700; margin-bottom:0.5rem; }
+.why-desc { font-size:0.875rem; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+/* DASHBOARD PREVIEW */
+.preview-container {
+  margin-top:3rem;
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-lg);
+}
+.preview-topbar {
+  background:rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.07);
+  padding:14px 20px; display:flex; align-items:center; gap:8px;
+}
+.tb-dot { width:12px; height:12px; border-radius:50%; }
+.tb-red { background:#ff5f57; } .tb-yellow { background:#febc2e; } .tb-green { background:#28c840; }
+.tb-title { margin:0 auto; font-size:0.8rem; color:rgba(255,255,255,0.4); }
+.preview-body { display:grid; grid-template-columns:220px 1fr; min-height:400px; }
+.preview-sidebar { background:rgba(0,0,0,0.2); border-right:1px solid rgba(255,255,255,0.05); padding:1.5rem 1rem; }
+.sidebar-user { display:flex; align-items:center; gap:10px; margin-bottom:2rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06); }
+.user-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--teal)); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; }
+.user-name { font-size:0.85rem; font-weight:600; }
+.user-level { font-size:0.72rem; color:rgba(255,255,255,0.4); }
+.sidebar-nav { list-style:none; }
+.snav-item { display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:8px; font-size:0.82rem; cursor:pointer; color:rgba(255,255,255,0.5); transition:all 0.2s; margin-bottom:2px; }
+.snav-item.active { background:rgba(59,130,246,0.15); color:var(--blue-light); font-weight:600; }
+.snav-item:hover:not(.active) { background:rgba(255,255,255,0.04); color:white; }
+.preview-main { padding:1.5rem; }
+.pm-title { font-family:'Sora',sans-serif; font-size:1rem; font-weight:700; margin-bottom:1.5rem; }
+.pm-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:1.5rem; }
+.pm-stat { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:14px; text-align:center; }
+.pm-stat-num { font-family:'Sora',sans-serif; font-size:1.4rem; font-weight:800; background:linear-gradient(135deg,var(--blue-light),var(--teal-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.pm-stat-label { font-size:0.7rem; color:rgba(255,255,255,0.4); margin-top:3px; }
+.pm-lessons { display:flex; flex-direction:column; gap:8px; }
+.pm-lesson { display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:12px; }
+.pm-lesson-icon { width:36px; height:36px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+.li-blue { background:rgba(59,130,246,0.2); } .li-green { background:rgba(16,185,129,0.2); } .li-yellow { background:rgba(245,158,11,0.2); } .li-teal { background:rgba(13,148,136,0.2); }
+.pm-lesson-info { flex:1; }
+.pm-lesson-title { font-size:0.82rem; font-weight:600; margin-bottom:2px; }
+.pm-lesson-sub { font-size:0.72rem; color:rgba(255,255,255,0.4); }
+.pm-lesson-progress { width:80px; height:4px; background:rgba(255,255,255,0.08); border-radius:2px; overflow:hidden; }
+.pm-lesson-fill { height:100%; border-radius:2px; background:linear-gradient(90deg,var(--blue),var(--teal)); }
+
+/* FAQ PAGE */
+#page-faq { background:var(--navy); padding-top:72px; }
+.faq-inner { max-width:800px; margin:0 auto; padding:60px 5% 80px; }
+.faq-list { margin-top:2.5rem; }
+.faq-item { border-bottom:1px solid rgba(255,255,255,0.07); overflow:hidden; }
+.faq-q { display:flex; justify-content:space-between; align-items:center; padding:1.2rem 0; cursor:pointer; font-weight:600; font-size:0.95rem; transition:color 0.2s; }
+.faq-q:hover { color:var(--blue-light); }
+.faq-chevron { font-size:1.2rem; transition:transform 0.3s; color:rgba(255,255,255,0.4); flex-shrink:0; }
+.faq-item.open .faq-chevron { transform:rotate(180deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease,padding 0.3s; font-size:0.9rem; line-height:1.7; color:rgba(255,255,255,0.55); }
+.faq-item.open .faq-a { max-height:200px; padding-bottom:1.2rem; }
+
+/* AUTH MODAL */
+.auth-overlay {
+  display:none; position:fixed; inset:0; z-index:2000;
+  background:rgba(0,0,0,0.75); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center;
+}
+.auth-overlay.open { display:flex; animation:fadeIn 0.2s ease; }
+.auth-modal {
+  background:#0f1f3d; border:1px solid rgba(255,255,255,0.1);
+  border-radius:24px; padding:2.5rem; width:100%; max-width:420px;
+  text-align:center; position:relative; box-shadow:0 24px 80px rgba(0,0,0,0.5);
+  animation:slideUp 0.3s ease; z-index:2001; pointer-events:all;
+}
+.auth-close {
+  position:absolute; top:16px; right:16px;
+  background:rgba(255,255,255,0.07); border:none; color:white;
+  width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:1rem;
+  display:flex; align-items:center; justify-content:center; transition:background 0.2s;
+}
+.auth-close:hover { background:rgba(255,255,255,0.15); }
+.auth-logo { width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,#1a56db,#14b8a6); display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-weight:800; font-size:1.2rem; margin:0 auto 1.2rem; }
+.auth-title { font-family:'Sora',sans-serif; font-size:1.4rem; font-weight:800; margin-bottom:0.5rem; }
+.auth-sub { font-size:0.875rem; color:rgba(255,255,255,0.5); margin-bottom:1.5rem; line-height:1.5; }
+.auth-benefits { list-style:none; margin-bottom:1.5rem; text-align:left; }
+.auth-benefits li { display:flex; align-items:center; gap:8px; font-size:0.85rem; color:rgba(255,255,255,0.6); margin-bottom:8px; }
+.auth-benefits li::before { content:'✓'; color:var(--teal-light); font-weight:700; }
+.btn-google {
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  width:100%; padding:14px; background:white; color:#1e293b;
+  border:none; border-radius:12px; font-size:0.95rem; font-weight:600;
+  cursor:pointer; font-family:'Sora',sans-serif; transition:all 0.2s;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2); position:relative; z-index:10; pointer-events:all;
+}
+.btn-google:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+.btn-google:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+.google-icon { width:20px; height:20px; flex-shrink:0; }
+.auth-note { margin-top:1rem; font-size:0.75rem; color:rgba(255,255,255,0.3); line-height:1.5; }
+
+/* TOAST */
+.toast {
+  position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px);
+  background:#0f1f3d; border:1px solid rgba(16,185,129,0.4); border-radius:12px;
+  padding:14px 24px; display:flex; align-items:center; gap:10px;
+  font-size:0.875rem; font-weight:500; z-index:3000; transition:transform 0.4s ease;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.toast.show { transform:translateX(-50%) translateY(0); }
+
+/* DIVIDER */
+.section-divider { border:none; border-top:1px solid rgba(255,255,255,0.06); margin:0; }
+
+/* ANIMATIONS */
+@keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+@keyframes glow { 0%,100% { box-shadow:0 0 30px rgba(59,130,246,0.5); } 50% { box-shadow:0 0 40px rgba(59,130,246,0.8); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+@media(max-width:1024px) {
+  .hero-content { grid-template-columns:1fr; }
+  .hero-illustration { display:none; }
+  .stats-inner { grid-template-columns:repeat(2,1fr); }
+  .path-steps { grid-template-columns:repeat(3,1fr); }
+  .path-line { display:none; }
+  .preview-body { grid-template-columns:1fr; }
+  .preview-sidebar { display:none; }
+  .why-grid { grid-template-columns:1fr; }
+}
+@media(max-width:768px) {
+  .nav-links { display:none; }
+  .hero-title { font-size:1.8rem; }
+  .pm-stats { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-icon">DS</div>
+    Deutsch Steps
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" data-i18n="nav_home">Hauptseite</a></li>
+    <li><a onclick="showPage('about')" data-i18n="nav_about">Über uns</a></li>
+    <li><a onclick="showPage('faq')" data-i18n="nav_faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn" id="langBtn">
+        <span id="langFlag">🇩🇪</span>
+        <span id="langLabel">DE</span>
+        <span style="font-size:0.7rem;opacity:0.6">▾</span>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <div class="lang-option active" data-lang="de">🇩🇪 &nbsp; Deutsch</div>
+        <div class="lang-option" data-lang="en">🇬🇧 &nbsp; English</div>
+        <div class="lang-option" data-lang="ru">🇷🇺 &nbsp; Русский</div>
+        <div class="lang-option" data-lang="uk">🇺🇦 &nbsp; Українська</div>
+      </div>
+    </div>
+    <div id="navAuthArea">
+      <button class="btn-nav" onclick="openAuth()" data-i18n="nav_cta">Kostenlos starten</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== PAGE: HOME ===== -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge"><span class="badge-dot"></span><span data-i18n="badge">Zertifizierte Sprachplattform · Goethe-kompatibel</span></div>
+        <h1 class="hero-title">
+          <span data-i18n="hero_title_1">Deutsch lernen.</span><br>
+          <span class="highlight" data-i18n="hero_title_2">Schritt für Schritt</span><br>
+          <span data-i18n="hero_title_3">zur Sprachsicherheit.</span>
+        </h1>
+        <p class="hero-sub" data-i18n="hero_sub">Lerne Deutsch von A1 bis C2 mit einem klaren Lernpfad, interaktiven Kursen und professioneller Begleitung.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="openAuth()" data-i18n="btn_start">Jetzt starten</button>
+          <button class="btn-secondary" onclick="openAuth()" data-i18n="btn_courses">Kurse entdecken</button>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><span class="trust-icon">✓</span><span data-i18n="trust_1">Keine Vorkenntnisse nötig</span></div>
+          <div class="trust-item"><span class="trust-icon">✓</span><span data-i18n="trust_2">Zertifikat inklusive</span></div>
+          <div class="trust-item"><span class="trust-icon">✓</span><span data-i18n="trust_3">Kostenlos testen</span></div>
+        </div>
+      </div>
+      <div class="hero-illustration">
+        <div class="hero-card-main">
+          <div class="progress-header">
+            <div class="progress-title">Mein Lernpfad</div>
+            <div class="progress-badge">B1 aktiv</div>
+          </div>
+          <div class="level-grid">
+            <div class="level-chip done">A1 ✓</div>
+            <div class="level-chip done">A2 ✓</div>
+            <div class="level-chip active">B1 ▶</div>
+            <div class="level-chip locked">B2</div>
+            <div class="level-chip locked">C1</div>
+            <div class="level-chip locked">C2</div>
+          </div>
+          <div class="lesson-progress">
+            <div class="lp-row"><div class="lp-label">Grammatik</div><div class="lp-bar"><div class="lp-fill" style="width:78%"></div></div><div class="lp-pct">78%</div></div>
+            <div class="lp-row"><div class="lp-label">Wortschatz</div><div class="lp-bar"><div class="lp-fill" style="width:62%"></div></div><div class="lp-pct">62%</div></div>
+            <div class="lp-row"><div class="lp-label">Sprechen</div><div class="lp-bar"><div class="lp-fill" style="width:45%"></div></div><div class="lp-pct">45%</div></div>
+          </div>
+        </div>
+        <div class="floating-card fc-streak"><div class="fc-row"><span class="fc-icon">🔥</span><div><div class="fc-val">14 Tage</div><div class="fc-text">Lernserie aktiv</div></div></div></div>
+        <div class="floating-card fc-xp"><div class="fc-row"><span class="fc-icon">⭐</span><div><div class="fc-val">+240 XP</div><div class="fc-text">Diese Woche</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">6</div><div class="stat-label" data-i18n="stat_levels">Sprachniveaus A1–C2</div></div>
+      <div class="stat-item"><div class="stat-num">5</div><div class="stat-label" data-i18n="stat_courses">Kursprogramme</div></div>
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label" data-i18n="stat_free">Kostenlos</div></div>
+      <div class="stat-item"><div class="stat-num">A1→C2</div><div class="stat-label" data-i18n="stat_path">Vollständiger Lernpfad</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: COURSES ===== -->
+<div class="page" id="page-courses">
+  <div class="page-hero">
+    <div class="section-label" data-i18n="courses_label">Kursprogramme</div>
+    <h1 data-i18n="courses_title">Wähle deinen Kurs</h1>
+    <p data-i18n="courses_sub">Von Grundlagen bis zur professionellen Sprachkompetenz — wähle deinen Einstiegspunkt.</p>
+  </div>
+
+  <div class="path-section">
+    <div class="section-label" data-i18n="path_label">Lernpfad</div>
+    <h2 class="section-title" data-i18n="path_title">Von A1 bis C2 — klar strukturiert</h2>
+    <p class="section-sub" data-i18n="path_sub">Klicke auf eine Stufe, um mehr zu erfahren.</p>
+    <div class="path-visual">
+      <div class="path-line"></div>
+      <div class="path-steps">
+        <div class="path-step">
+          <div class="path-tooltip"><div class="path-tooltip-title">A1 – Anfänger</div><ul class="path-tooltip-list"><li>Begrüßungen & Vorstellung</li><li>Zahlen, Farben, Alltag</li><li>Einfache Sätze bilden</li></ul></div>
+          <div class="path-node done">A1</div><div class="path-label">Anfänger</div><div class="path-desc">Grundlagen der Sprache</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip"><div class="path-tooltip-title">A2 – Grundwissen</div><ul class="path-tooltip-list"><li>Familie & Wohnen</li><li>Einkaufen & Reisen</li><li>Vergangene Ereignisse</li></ul></div>
+          <div class="path-node done">A2</div><div class="path-label">Grundwissen</div><div class="path-desc">Alltagssituationen meistern</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip"><div class="path-tooltip-title">B1 – Mittelstufe</div><ul class="path-tooltip-list"><li>Meinungen ausdrücken</li><li>Beruf & Ausbildung</li><li>Komplexe Satzstrukturen</li></ul></div>
+          <div class="path-node current">B1</div><div class="path-label">Mittelstufe</div><div class="path-desc">Selbstständige Kommunikation</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip"><div class="path-tooltip-title">B2 – Fortgeschritten</div><ul class="path-tooltip-list"><li>Fachsprachliche Texte</li><li>Diskussion & Argumentation</li><li>Akademisches Schreiben</li></ul></div>
+          <div class="path-node future">B2</div><div class="path-label">Fortgeschritten</div><div class="path-desc">Komplexe Themen verstehen</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip"><div class="path-tooltip-title">C1 – Kompetent</div><ul class="path-tooltip-list"><li>Wissenschaftliche Texte</li><li>Nuancierte Ausdrucksweise</li><li>Prüfungsvorbereitung</li></ul></div>
+          <div class="path-node future">C1</div><div class="path-label">Kompetent</div><div class="path-desc">Professionelle Kommunikation</div>
+        </div>
+        <div class="path-step">
+          <div class="path-tooltip"><div class="path-tooltip-title">C2 – Meisterschaft</div><ul class="path-tooltip-list"><li>Muttersprachliches Niveau</li><li>Literarische Texte</li><li>C2-Zertifikat</li></ul></div>
+          <div class="path-node future">C2</div><div class="path-label">Meisterschaft</div><div class="path-desc">Muttersprachliches Niveau</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div class="courses-section">
+    <div class="section-label" data-i18n="programs_label">Programme</div>
+    <h2 class="section-title" data-i18n="programs_title">Kursprogramme</h2>
+    <div class="courses-grid" id="coursesGrid">
+
+      <div class="course-card reveal" data-course="a1a2">
+        <div class="course-level level-a">A1 – A2</div>
+        <div class="course-title">Deutsch Grundlagen</div>
+        <div class="course-sub">Dein erster Schritt in die deutsche Sprache</div>
+        <div class="course-meta">
+          <div class="meta-item">📅 12 Wochen</div>
+          <div class="meta-item">📚 48 Module</div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span>Sich vorstellen und begrüßen</li>
+          <li><span class="goal-check">✓</span>Alltägliche Gespräche führen</li>
+          <li><span class="goal-check">✓</span>Einfache Texte lesen & schreiben</li>
+        </ul>
+        <button class="btn-course" onclick="selectCourse(this,'a1a2')" data-i18n="btn_enroll">Kurs wählen</button>
+      </div>
+
+      <div class="course-card reveal" data-course="a2b1">
+        <div class="course-level level-a">A2 – B1</div>
+        <div class="course-title">Alltag & Kommunikation</div>
+        <div class="course-sub">Flüssig im Alltag – sicher in Gesprächen</div>
+        <div class="course-meta">
+          <div class="meta-item">📅 14 Wochen</div>
+          <div class="meta-item">📚 56 Module</div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span>Meinungen klar ausdrücken</li>
+          <li><span class="goal-check">✓</span>Arbeit, Familie, Freizeit besprechen</li>
+          <li><span class="goal-check">✓</span>Reise & Behördengänge meistern</li>
+        </ul>
+        <button class="btn-course" onclick="selectCourse(this,'a2b1')" data-i18n="btn_enroll">Kurs wählen</button>
+      </div>
+
+      <div class="course-card reveal" data-course="b1b2" style="border-color:rgba(59,130,246,0.15)">
+        <div style="position:absolute;top:16px;right:16px;background:rgba(59,130,246,0.15);color:var(--blue-light);border:1px solid rgba(59,130,246,0.3);border-radius:6px;padding:2px 8px;font-size:0.7rem;font-weight:700;" data-i18n="popular">Beliebt</div>
+        <div class="course-level level-b">B1 – B2</div>
+        <div class="course-title">Beruf & Praxis</div>
+        <div class="course-sub">Professionell kommunizieren im Berufsumfeld</div>
+        <div class="course-meta">
+          <div class="meta-item">📅 16 Wochen</div>
+          <div class="meta-item">📚 64 Module</div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span>Bewerbung & Vorstellungsgespräch</li>
+          <li><span class="goal-check">✓</span>E-Mails & Berichte verfassen</li>
+          <li><span class="goal-check">✓</span>Fachdiskussionen führen</li>
+        </ul>
+        <button class="btn-course" onclick="selectCourse(this,'b1b2')" data-i18n="btn_enroll">Kurs wählen</button>
+      </div>
+
+      <div class="course-card reveal" data-course="b2c1">
+        <div class="course-level level-b">B2 – C1</div>
+        <div class="course-title">Akademisches Deutsch</div>
+        <div class="course-sub">Für Studium und wissenschaftliches Arbeiten</div>
+        <div class="course-meta">
+          <div class="meta-item">📅 18 Wochen</div>
+          <div class="meta-item">📚 72 Module</div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span>Wissenschaftliche Texte analysieren</li>
+          <li><span class="goal-check">✓</span>Hausarbeiten & Referate halten</li>
+          <li><span class="goal-check">✓</span>DSH/TestDaF Vorbereitung</li>
+        </ul>
+        <button class="btn-course" onclick="selectCourse(this,'b2c1')" data-i18n="btn_enroll">Kurs wählen</button>
+      </div>
+
+      <div class="course-card reveal" data-course="c1c2">
+        <div class="course-level level-c">C1 – C2</div>
+        <div class="course-title">Professionelle Sprachkompetenz</div>
+        <div class="course-sub">Muttersprachliches Niveau erreichen</div>
+        <div class="course-meta">
+          <div class="meta-item">📅 20 Wochen</div>
+          <div class="meta-item">📚 80 Module</div>
+        </div>
+        <ul class="course-goals">
+          <li><span class="goal-check">✓</span>Literarische und journalistische Texte</li>
+          <li><span class="goal-check">✓</span>Differenzierte Argumentation</li>
+          <li><span class="goal-check">✓</span>C2-Goethe-Zertifikat Vorbereitung</li>
+        </ul>
+        <button class="btn-course" onclick="selectCourse(this,'c1c2')" data-i18n="btn_enroll">Kurs wählen</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: ABOUT ===== -->
+<div class="page" id="page-about">
+  <div class="about-inner">
+    <div class="section-label" data-i18n="why_label">Warum Deutsch Steps</div>
+    <h1 class="section-title" data-i18n="why_title">Lernen, wie es sein sollte</h1>
+    <p class="section-sub" data-i18n="why_sub">Wir kombinieren bewährte Didaktik mit moderner Technologie für maximalen Lernerfolg.</p>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon-box">🗺️</div>
+        <div><div class="why-title" data-i18n="why_1_title">Strukturierter Lernpfad</div><div class="why-desc" data-i18n="why_1_desc">Jedes Thema baut logisch auf dem vorigen auf. Kein Raten, kein Springen – nur klarer Fortschritt von Lektion zu Lektion.</div></div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-box">🎯</div>
+        <div><div class="why-title" data-i18n="why_2_title">Interaktive Übungen</div><div class="why-desc" data-i18n="why_2_desc">Sprechen, Hören, Lesen, Schreiben – alle vier Fähigkeiten werden gezielt trainiert durch abwechslungsreiche Übungsformate.</div></div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-box">💼</div>
+        <div><div class="why-title" data-i18n="why_3_title">Praxisorientiertes Lernen</div><div class="why-desc" data-i18n="why_3_desc">Reale Dialoge, authentische Texte und berufstaugliche Sprachsituationen bereiten dich direkt auf den Alltag vor.</div></div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-box">📊</div>
+        <div><div class="why-title" data-i18n="why_4_title">Persönliche Fortschrittsanalyse</div><div class="why-desc" data-i18n="why_4_desc">Dein Dashboard zeigt genau, wo du stehst, was du als nächstes lernst und welche Stärken du bereits entwickelt hast.</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:4rem;">
+      <div class="section-label" data-i18n="preview_label">Plattform</div>
+      <h2 class="section-title" data-i18n="preview_title">Dein persönliches Lern-Dashboard</h2>
+      <p class="section-sub" data-i18n="preview_sub">Alles auf einen Blick – dein Fortschritt, die nächsten Lektionen, deine Statistiken.</p>
+      <div class="preview-container reveal">
+        <div class="preview-topbar">
+          <div class="tb-dot tb-red"></div><div class="tb-dot tb-yellow"></div><div class="tb-dot tb-green"></div>
+          <div class="tb-title">Deutsch Steps – Lernplattform</div>
+        </div>
+        <div class="preview-body">
+          <div class="preview-sidebar">
+            <div class="sidebar-user">
+              <div class="user-avatar">MA</div>
+              <div><div class="user-name">Maria A.</div><div class="user-level">Niveau: B1</div></div>
+            </div>
+            <ul class="sidebar-nav">
+              <li class="snav-item active">📊 Dashboard</li>
+              <li class="snav-item">📚 Lektionen</li>
+              <li class="snav-item">🎙️ Sprechen</li>
+              <li class="snav-item">📝 Wortschatz</li>
+              <li class="snav-item">📜 Zertifikate</li>
+            </ul>
+          </div>
+          <div class="preview-main">
+            <div class="pm-title">So könnte dein Dashboard aussehen 👋</div>
+            <div class="pm-stats">
+              <div class="pm-stat"><div class="pm-stat-num">78%</div><div class="pm-stat-label">B1 Fortschritt</div></div>
+              <div class="pm-stat"><div class="pm-stat-num">14</div><div class="pm-stat-label">Tage Streak</div></div>
+              <div class="pm-stat"><div class="pm-stat-num">2 340</div><div class="pm-stat-label">Gesamt-XP</div></div>
+              <div class="pm-stat"><div class="pm-stat-num">3</div><div class="pm-stat-label">Zertifikate</div></div>
+            </div>
+            <div class="pm-lessons">
+              <div class="pm-lesson"><div class="pm-lesson-icon li-blue">📖</div><div class="pm-lesson-info"><div class="pm-lesson-title">Lektion 24 – Konjunktiv II</div><div class="pm-lesson-sub">Grammatik · 20 min</div></div><div class="pm-lesson-progress"><div class="pm-lesson-fill" style="width:65%"></div></div></div>
+              <div class="pm-lesson"><div class="pm-lesson-icon li-green">🎙️</div><div class="pm-lesson-info"><div class="pm-lesson-title">Sprechübung – Bewerbungsgespräch</div><div class="pm-lesson-sub">Sprechen · 15 min</div></div><div class="pm-lesson-progress"><div class="pm-lesson-fill" style="width:30%"></div></div></div>
+              <div class="pm-lesson"><div class="pm-lesson-icon li-yellow">⚡</div><div class="pm-lesson-info"><div class="pm-lesson-title">Vokabeltrainer – Berufswortschatz</div><div class="pm-lesson-sub">Wortschatz · 10 min</div></div><div class="pm-lesson-progress"><div class="pm-lesson-fill" style="width:0%"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: FAQ ===== -->
+<div class="page" id="page-faq">
+  <div class="faq-inner">
+    <div class="section-label">FAQ</div>
+    <h1 class="section-title" data-i18n="faq_title">Häufige Fragen</h1>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q"><span data-i18n="faq_1_q">Muss ich Vorkenntnisse mitbringen?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-i18n="faq_1_a">Nein. Unser A1-Kurs beginnt bei null – buchstäblich beim ersten Wort. Du musst nur Lernbereitschaft und einen Computer oder ein Smartphone mitbringen.</div></div>
+      <div class="faq-item"><div class="faq-q"><span data-i18n="faq_2_q">Wie lange dauert es, von A1 auf B2 zu kommen?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-i18n="faq_2_a">Bei einer täglichen Lernzeit von 30–45 Minuten können die meisten Lernenden das B2-Niveau in 12–18 Monaten erreichen. Natürlich hängt es vom individuellen Tempo ab.</div></div>
+      <div class="faq-item"><div class="faq-q"><span data-i18n="faq_3_q">Sind die Kurse wirklich kostenlos?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-i18n="faq_3_a">Ja, alle Kurse auf Deutsch Steps sind vollständig kostenlos. Es gibt keine versteckten Kosten und keine Kreditkarte erforderlich.</div></div>
+      <div class="faq-item"><div class="faq-q"><span data-i18n="faq_4_q">Warum muss ich mich mit Google anmelden?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-i18n="faq_4_a">Die Anmeldung ermöglicht es uns, deinen Lernfortschritt zu speichern und dir ein persönliches Dashboard zu bieten. Wir verwenden nur deinen Namen und deine E-Mail-Adresse.</div></div>
+      <div class="faq-item"><div class="faq-q"><span data-i18n="faq_5_q">Kann ich den Kurs jederzeit wechseln?</span><span class="faq-chevron">▾</span></div><div class="faq-a" data-i18n="faq_5_a">Ja, du kannst jederzeit einen anderen Kurs auswählen. Dein bisheriger Fortschritt bleibt gespeichert.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" id="authClose">✕</button>
+    <div class="auth-logo">DS</div>
+    <div class="auth-title" data-i18n="auth_title">Kostenlos starten</div>
+    <div class="auth-sub" data-i18n="auth_sub">Melde dich an und starte sofort mit dem Lernen.</div>
+    <ul class="auth-benefits">
+      <li data-i18n="auth_b1">Alle Kurse kostenlos zugänglich</li>
+      <li data-i18n="auth_b2">Persönlicher Lernfortschritt gespeichert</li>
+      <li data-i18n="auth_b3">Zertifikate nach Kursabschluss</li>
+    </ul>
+    <button class="btn-google" id="btnGoogle">
+      <svg class="google-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      <span id="googleBtnText" data-i18n="btn_google">Mit Google anmelden</span>
+    </button>
+    <div class="auth-note" data-i18n="auth_note">Mit der Anmeldung stimmst du unseren Nutzungsbedingungen zu.</div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span>🎉</span><span id="toastText"></span></div>
+
+<script>
+// ===== I18N =====
+const T = {
+  de: {
+    nav_home:"Hauptseite", nav_about:"Über uns", nav_faq:"FAQ", nav_cta:"Kostenlos starten",
+    badge:"Zertifizierte Sprachplattform · Goethe-kompatibel",
+    hero_title_1:"Deutsch lernen.", hero_title_2:"Schritt für Schritt", hero_title_3:"zur Sprachsicherheit.",
+    hero_sub:"Lerne Deutsch von A1 bis C2 mit einem klaren Lernpfad, interaktiven Kursen und professioneller Begleitung.",
+    btn_start:"Jetzt starten", btn_courses:"Kurse entdecken",
+    trust_1:"Keine Vorkenntnisse nötig", trust_2:"Zertifikat inklusive", trust_3:"Kostenlos testen",
+    stat_levels:"Sprachniveaus A1–C2", stat_courses:"Kursprogramme", stat_free:"Kostenlos", stat_path:"Vollständiger Lernpfad",
+    courses_label:"Kursprogramme", courses_title:"Wähle deinen Kurs", courses_sub:"Von Grundlagen bis zur professionellen Sprachkompetenz.",
+    path_label:"Lernpfad", path_title:"Von A1 bis C2 — klar strukturiert", path_sub:"Klicke auf eine Stufe, um mehr zu erfahren.",
+    programs_label:"Programme", programs_title:"Kursprogramme",
+    popular:"Beliebt", btn_enroll:"Kurs wählen",
+    why_label:"Warum Deutsch Steps", why_title:"Lernen, wie es sein sollte", why_sub:"Wir kombinieren bewährte Didaktik mit moderner Technologie.",
+    why_1_title:"Strukturierter Lernpfad", why_1_desc:"Jedes Thema baut logisch auf dem vorigen auf. Kein Raten, kein Springen.",
+    why_2_title:"Interaktive Übungen", why_2_desc:"Sprechen, Hören, Lesen, Schreiben – alle vier Fähigkeiten werden gezielt trainiert.",
+    why_3_title:"Praxisorientiertes Lernen", why_3_desc:"Reale Dialoge und authentische Texte bereiten dich direkt auf den Alltag vor.",
+    why_4_title:"Persönliche Fortschrittsanalyse", why_4_desc:"Dein Dashboard zeigt genau, wo du stehst und was du als nächstes lernst.",
+    preview_label:"Plattform", preview_title:"Dein persönliches Lern-Dashboard", preview_sub:"Alles auf einen Blick – dein Fortschritt, die nächsten Lektionen.",
+    faq_title:"Häufige Fragen",
+    faq_1_q:"Muss ich Vorkenntnisse mitbringen?", faq_1_a:"Nein. Unser A1-Kurs beginnt bei null. Du musst nur Lernbereitschaft mitbringen.",
+    faq_2_q:"Wie lange dauert es, von A1 auf B2 zu kommen?", faq_2_a:"Bei 30–45 Minuten täglich erreichen die meisten B2 in 12–18 Monaten.",
+    faq_3_q:"Sind die Kurse wirklich kostenlos?", faq_3_a:"Ja, alle Kurse sind vollständig kostenlos. Keine versteckten Kosten, keine Kreditkarte.",
+    faq_4_q:"Warum muss ich mich mit Google anmelden?", faq_4_a:"Die Anmeldung speichert deinen Lernfortschritt und gibt dir ein persönliches Dashboard.",
+    faq_5_q:"Kann ich den Kurs jederzeit wechseln?", faq_5_a:"Ja, jederzeit. Dein bisheriger Fortschritt bleibt gespeichert.",
+    auth_title:"Kostenlos starten", auth_sub:"Melde dich an und starte sofort.",
+    auth_b1:"Alle Kurse kostenlos zugänglich", auth_b2:"Persönlicher Lernfortschritt gespeichert", auth_b3:"Zertifikate nach Kursabschluss",
+    btn_google:"Mit Google anmelden", auth_note:"Mit der Anmeldung stimmst du unseren Nutzungsbedingungen zu.",
+    toast_new:"Willkommen! Schön, dass du dabei bist 🎉", toast_back:"Schön, dich wieder zu sehen"
+  },
+  en: {
+    nav_home:"Home", nav_about:"About", nav_faq:"FAQ", nav_cta:"Start for free",
+    badge:"Certified Language Platform · Goethe-compatible",
+    hero_title_1:"Learn German.", hero_title_2:"Step by step", hero_title_3:"to language confidence.",
+    hero_sub:"Learn German from A1 to C2 with a clear learning path, interactive courses, and professional guidance.",
+    btn_start:"Get started", btn_courses:"Explore courses",
+    trust_1:"No prior knowledge needed", trust_2:"Certificate included", trust_3:"Try for free",
+    stat_levels:"Language levels A1–C2", stat_courses:"Course programs", stat_free:"Free of charge", stat_path:"Complete learning path",
+    courses_label:"Course Programs", courses_title:"Choose your course", courses_sub:"From basics to professional fluency.",
+    path_label:"Learning Path", path_title:"From A1 to C2 — clearly structured", path_sub:"Click a level to learn more.",
+    programs_label:"Programs", programs_title:"Course Programs",
+    popular:"Popular", btn_enroll:"Choose course",
+    why_label:"Why Deutsch Steps", why_title:"Learning, the way it should be", why_sub:"We combine proven pedagogy with modern technology.",
+    why_1_title:"Structured learning path", why_1_desc:"Every topic builds logically on the previous one. No guessing, no jumping.",
+    why_2_title:"Interactive exercises", why_2_desc:"Speaking, listening, reading, writing – all four skills targeted.",
+    why_3_title:"Practice-oriented learning", why_3_desc:"Real dialogues and authentic texts prepare you for everyday life.",
+    why_4_title:"Personal progress analytics", why_4_desc:"Your dashboard shows exactly where you stand and what you'll learn next.",
+    preview_label:"Platform", preview_title:"Your personal learning dashboard", preview_sub:"Everything at a glance – your progress, next lessons.",
+    faq_title:"Frequently asked questions",
+    faq_1_q:"Do I need prior knowledge?", faq_1_a:"No. Our A1 course starts from zero. All you need is willingness to learn.",
+    faq_2_q:"How long does it take to go from A1 to B2?", faq_2_a:"With 30–45 minutes daily, most reach B2 in 12–18 months.",
+    faq_3_q:"Are the courses really free?", faq_3_a:"Yes, all courses are completely free. No hidden costs, no credit card.",
+    faq_4_q:"Why do I need to sign in with Google?", faq_4_a:"Sign-in saves your progress and gives you a personal dashboard.",
+    faq_5_q:"Can I switch courses at any time?", faq_5_a:"Yes, anytime. Your previous progress is saved.",
+    auth_title:"Start for free", auth_sub:"Sign in and start learning immediately.",
+    auth_b1:"All courses free", auth_b2:"Personal progress saved", auth_b3:"Certificates after completion",
+    btn_google:"Sign in with Google", auth_note:"By signing in you agree to our terms of use.",
+    toast_new:"Welcome! Great to have you 🎉", toast_back:"Good to see you again"
+  },
+  ru: {
+    nav_home:"Главная", nav_about:"О нас", nav_faq:"FAQ", nav_cta:"Начать бесплатно",
+    badge:"Сертифицированная языковая платформа · Совместима с Goethe",
+    hero_title_1:"Учи немецкий.", hero_title_2:"Шаг за шагом", hero_title_3:"к уверенному владению.",
+    hero_sub:"Изучай немецкий от A1 до C2 по чёткому учебному пути, интерактивным курсам и с профессиональным сопровождением.",
+    btn_start:"Начать сейчас", btn_courses:"Смотреть курсы",
+    trust_1:"Без предварительных знаний", trust_2:"Сертификат включён", trust_3:"Попробовать бесплатно",
+    stat_levels:"Уровни A1–C2", stat_courses:"Курсовые программы", stat_free:"Полностью бесплатно", stat_path:"Полный учебный путь",
+    courses_label:"Курсовые программы", courses_title:"Выбери свой курс", courses_sub:"От основ до профессионального владения языком.",
+    path_label:"Учебный путь", path_title:"От A1 до C2 — чётко структурировано", path_sub:"Нажми на уровень, чтобы узнать больше.",
+    programs_label:"Программы", programs_title:"Курсовые программы",
+    popular:"Популярный", btn_enroll:"Выбрать курс",
+    why_label:"Почему Deutsch Steps", why_title:"Обучение таким, каким оно должно быть", why_sub:"Мы сочетаем проверенную дидактику с современными технологиями.",
+    why_1_title:"Структурированный учебный путь", why_1_desc:"Каждая тема логически строится на предыдущей. Никакого хаоса.",
+    why_2_title:"Интерактивные упражнения", why_2_desc:"Говорение, слушание, чтение, письмо — все четыре навыка.",
+    why_3_title:"Практически ориентированное обучение", why_3_desc:"Реальные диалоги и аутентичные тексты готовят к реальной жизни.",
+    why_4_title:"Персональный анализ прогресса", why_4_desc:"Твой дашборд показывает, где ты и что учишь дальше.",
+    preview_label:"Платформа", preview_title:"Твоя личная учебная панель", preview_sub:"Всё сразу — твой прогресс, следующие уроки.",
+    faq_title:"Часті запитання",
+    faq_1_q:"Нужны ли предварительные знания?", faq_1_a:"Нет. Наш курс A1 начинается с нуля. Нужны лишь желание учиться.",
+    faq_2_q:"Сколько времени нужно от A1 до B2?", faq_2_a:"При 30–45 минутах в день большинство достигают B2 за 12–18 месяцев.",
+    faq_3_q:"Курсы действительно бесплатные?", faq_3_a:"Да, все курсы полностью бесплатны. Никаких скрытых платежей.",
+    faq_4_q:"Зачем нужен вход через Google?", faq_4_a:"Вход сохраняет твой прогресс и даёт доступ к личному дашборду.",
+    faq_5_q:"Можно ли менять курс в любое время?", faq_5_a:"Да, в любой момент. Прогресс сохраняется.",
+    auth_title:"Начать бесплатно", auth_sub:"Войди и начни учиться прямо сейчас.",
+    auth_b1:"Все курсы доступны бесплатно", auth_b2:"Личный прогресс сохраняется", auth_b3:"Сертификаты после прохождения",
+    btn_google:"Войти через Google", auth_note:"Входя, ты соглашаешься с условиями использования.",
+    toast_new:"Добро пожаловать! Рады видеть тебя 🎉", toast_back:"Рады снова видеть тебя"
+  },
+  uk: {
+    nav_home:"Головна", nav_about:"Про нас", nav_faq:"FAQ", nav_cta:"Почати безкоштовно",
+    badge:"Сертифікована мовна платформа · Сумісна з Goethe",
+    hero_title_1:"Вчи німецьку.", hero_title_2:"Крок за кроком", hero_title_3:"до впевненого мовлення.",
+    hero_sub:"Вивчай німецьку від A1 до C2 з чітким навчальним шляхом, інтерактивними курсами та професійним супроводом.",
+    btn_start:"Почати зараз", btn_courses:"Переглянути курси",
+    trust_1:"Без попередніх знань", trust_2:"Сертифікат включено", trust_3:"Спробувати безкоштовно",
+    stat_levels:"Рівні A1–C2", stat_courses:"Курсові програми", stat_free:"Повністю безкоштовно", stat_path:"Повний навчальний шлях",
+    courses_label:"Курсові програми", courses_title:"Обери свій курс", courses_sub:"Від основ до професійного рівня.",
+    path_label:"Навчальний шлях", path_title:"Від A1 до C2 — чітко структуровано", path_sub:"Натисни на рівень, щоб дізнатися більше.",
+    programs_label:"Програми", programs_title:"Курсові програми",
+    popular:"Популярний", btn_enroll:"Обрати курс",
+    why_label:"Чому Deutsch Steps", why_title:"Навчання таким, яким воно має бути", why_sub:"Ми поєднуємо перевірену дидактику із сучасними технологіями.",
+    why_1_title:"Структурований навчальний шлях", why_1_desc:"Кожна тема логічно будується на попередній. Жодного хаосу.",
+    why_2_title:"Інтерактивні вправи", why_2_desc:"Говоріння, слухання, читання, письмо — усі чотири навички.",
+    why_3_title:"Практично орієнтоване навчання", why_3_desc:"Реальні діалоги та автентичні тексти готують до реального життя.",
+    why_4_title:"Персональний аналіз прогресу", why_4_desc:"Твій дашборд показує, де ти і що вчитимеш далі.",
+    preview_label:"Платформа", preview_title:"Твоя особиста навчальна панель", preview_sub:"Все одразу — твій прогрес, наступні уроки.",
+    faq_title:"Часті запитання",
+    faq_1_q:"Чи потрібні попередні знання?", faq_1_a:"Ні. Наш курс A1 починається з нуля. Потрібне лише бажання вчитися.",
+    faq_2_q:"Скільки часу потрібно від A1 до B2?", faq_2_a:"При 30–45 хвилинах на день більшість досягають B2 за 12–18 місяців.",
+    faq_3_q:"Курси справді безкоштовні?", faq_3_a:"Так, всі курси повністю безкоштовні. Жодних прихованих платежів.",
+    faq_4_q:"Навіщо потрібен вхід через Google?", faq_4_a:"Вхід зберігає твій прогрес і дає доступ до особистого дашборду.",
+    faq_5_q:"Чи можна змінити курс у будь-який час?", faq_5_a:"Так, у будь-який момент. Прогрес зберігається.",
+    auth_title:"Почати безкоштовно", auth_sub:"Увійди і почни вчитися одразу.",
+    auth_b1:"Всі курси доступні безкоштовно", auth_b2:"Особистий прогрес зберігається", auth_b3:"Сертифікати після проходження",
+    btn_google:"Увійти через Google", auth_note:"Входячи, ти погоджуєшся з умовами використання.",
+    toast_new:"Ласкаво просимо! Раді бачити тебе 🎉", toast_back:"Раді знову бачити тебе"
+  }
+};
+
+const langMeta = { de:{flag:'🇩🇪',label:'DE'}, en:{flag:'🇬🇧',label:'EN'}, ru:{flag:'🇷🇺',label:'RU'}, uk:{flag:'🇺🇦',label:'UK'} };
+let currentLang = localStorage.getItem('ds_lang') || navigator.language.slice(0,2);
+if (!T[currentLang]) currentLang = 'de';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('ds_lang', lang);
+  const t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k]) el.textContent = t[k];
+  });
+  document.getElementById('langFlag').textContent = langMeta[lang].flag;
+  document.getElementById('langLabel').textContent = langMeta[lang].label;
+  document.querySelectorAll('.lang-option').forEach(o => o.classList.toggle('active', o.dataset.lang===lang));
+}
+
+// Lang switcher
+document.getElementById('langBtn').addEventListener('click', e => { e.stopPropagation(); document.getElementById('langDropdown').classList.toggle('open'); });
+document.addEventListener('click', () => document.getElementById('langDropdown').classList.remove('open'));
+document.querySelectorAll('.lang-option').forEach(o => o.addEventListener('click', () => { applyLang(o.dataset.lang); document.getElementById('langDropdown').classList.remove('open'); }));
+
+// ===== PAGE NAVIGATION =====
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  window.scrollTo(0,0);
+  // update nav active
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('onclick') && a.getAttribute('onclick').includes("'"+name+"'")) a.classList.add('active');
+  });
+  // trigger reveal
+  setTimeout(initReveal, 100);
+}
+
+// ===== AUTH MODAL =====
+function openAuth() {
+  document.getElementById('authOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAuth() {
+  document.getElementById('authOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('authClose').addEventListener('click', closeAuth);
+document.getElementById('authOverlay').addEventListener('click', e => { if (e.target===e.currentTarget) closeAuth(); });
+
+// ===== TOAST =====
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastText').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ===== NAVBAR AUTH =====
+function updateNavbar(user) {
+  const area = document.getElementById('navAuthArea');
+  if (user) {
+    const initials = user.displayName ? user.displayName.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase() : 'U';
+    area.innerHTML = `
+      <div class="user-nav">
+        ${user.photoURL ? `<img src="${user.photoURL}" class="user-nav-avatar">` : `<div class="user-nav-initials">${initials}</div>`}
+        <span class="user-nav-name">${user.displayName||user.email}</span>
+        <button class="btn-signout" id="signOutBtn">Abmelden</button>
+      </div>`;
+    document.getElementById('signOutBtn').addEventListener('click', () => {
+      import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js').then(({getAuth,signOut}) => signOut(getAuth()));
+    });
+  } else {
+    area.innerHTML = `<button class="btn-nav" onclick="openAuth()" data-i18n="nav_cta">Kostenlos starten</button>`;
+    applyLang(currentLang);
+  }
+}
+
+// ===== COURSE SELECTION =====
+function selectCourse(btn, courseId) {
+  document.querySelectorAll('.course-card').forEach(c => {
+    c.classList.remove('selected');
+    c.querySelector('.btn-course').classList.remove('selected-btn');
+    c.querySelector('.btn-course').textContent = T[currentLang].btn_enroll || 'Kurs wählen';
+    const badge = c.querySelector('.selected-badge');
+    if (badge) badge.remove();
+  });
+  const card = btn.closest('.course-card');
+  card.classList.add('selected');
+  btn.classList.add('selected-btn');
+  btn.textContent = '✓ Gewählt';
+  const badge = document.createElement('div');
+  badge.className = 'selected-badge';
+  badge.textContent = '✓ Aktiv';
+  card.appendChild(badge);
+  localStorage.setItem('ds_selected_course', courseId);
+  showToast('Kurs gespeichert! ' + courseId.toUpperCase());
+}
+
+function restoreSelectedCourse() {
+  const saved = localStorage.getItem('ds_selected_course');
+  if (saved) {
+    const card = document.querySelector(`[data-course="${saved}"]`);
+    if (card) {
+      const btn = card.querySelector('.btn-course');
+      selectCourse(btn, saved);
+    }
+  }
+}
+
+// ===== FAQ =====
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// ===== REVEAL =====
+function initReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal:not(.visible)').forEach((el,i) => {
+    el.style.transitionDelay = (i%4)*0.08+'s';
+    obs.observe(el);
+  });
+}
+
+// Navbar scroll
+window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>40));
+
+applyLang(currentLang);
+initReveal();
+</script>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+
+const app = initializeApp({
+  apiKey: "AIzaSyDxL0QMz6JF8hV9bZpT5dAtu4YpE6PPff0",
+  authDomain: "deutsch-steps.firebaseapp.com",
+  projectId: "deutsch-steps",
+  storageBucket: "deutsch-steps.firebasestorage.app",
+  messagingSenderId: "301567183223",
+  appId: "1:301567183223:web:77d16899173f1dedcef972"
+});
+
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+getRedirectResult(auth).then(result => {
+  if (result && result.user) {
+    const isNew = result._tokenResponse?.isNewUser;
+    const t = window.T ? window.T[window.currentLang||'de'] : {};
+    showToast(isNew ? (t.toast_new||'Willkommen! 🎉') : (t.toast_back||'Schön, dich wieder zu sehen! 👋') + ', ' + result.user.displayName);
+    closeAuth();
+    showPage('courses');
+    setTimeout(restoreSelectedCourse, 300);
+  }
+}).catch(console.error);
+
+onAuthStateChanged(auth, user => {
+  window.currentUser = user;
+  updateNavbar(user);
+  if (user) restoreSelectedCourse();
+});
+
+document.getElementById('btnGoogle').addEventListener('click', async () => {
+  const btn = document.getElementById('btnGoogle');
+  const txt = document.getElementById('googleBtnText');
+  btn.disabled = true;
+  txt.textContent = 'Wird weitergeleitet...';
+  try {
+    await signInWithRedirect(auth, provider);
+  } catch(err) {
+    console.error(err);
+    txt.textContent = 'Fehler – bitte erneut versuchen';
+    setTimeout(() => { txt.textContent = window.T?.[window.currentLang||'de']?.btn_google||'Mit Google anmelden'; btn.disabled=false; }, 2000);
+  }
+});
+</script>
+</body>
+</html>

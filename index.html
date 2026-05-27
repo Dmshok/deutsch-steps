@@ -1053,6 +1053,8 @@ footer {
   position: relative;
   box-shadow: 0 24px 80px rgba(0,0,0,0.5);
   animation: slideUp 0.3s ease;
+  z-index: 2001;
+  pointer-events: all;
 }
 .auth-close {
   position: absolute; top: 16px; right: 16px;
@@ -1087,6 +1089,8 @@ footer {
   cursor: pointer; font-family: 'Sora', sans-serif;
   transition: all 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  position: relative; z-index: 10;
+  pointer-events: all;
 }
 .btn-google:hover {
   transform: translateY(-2px);
